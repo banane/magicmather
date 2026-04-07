@@ -103,11 +103,11 @@ function WeekCard({
         <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">🏕️ Your choices this week</span>
         <div className="mt-2 grid gap-2" style={{ gridTemplateColumns: `repeat(${breakdowns.length}, 1fr)` }}>
           {breakdowns.map((b) => (
-            <div key={b.size} className={`rounded-lg p-3 border-2 ${b.likely ? 'border-green-300 bg-green-50' : 'border-orange-300 bg-orange-50'}`}>
+            <div key={b.size} className={`rounded-lg p-3 border-2 ${b.slotsRemaining > 3 ? 'border-green-300 bg-green-50' : b.slotsRemaining > 0 ? 'border-yellow-300 bg-yellow-50' : 'border-orange-300 bg-orange-50'}`}>
               <div className="flex items-baseline justify-between">
                 <span className="font-bold text-gray-800 uppercase">{b.size}</span>
-                <span className={`text-xs font-semibold ${b.likely ? 'text-green-700' : 'text-orange-700'}`}>
-                  {b.likely ? '✅ Likely' : '⛔ Tough'}
+                <span className={`text-xs font-semibold ${b.slotsRemaining > 3 ? 'text-green-700' : b.slotsRemaining > 0 ? 'text-yellow-700' : 'text-orange-700'}`}>
+                  {b.slotsRemaining > 3 ? '🟢 Open' : b.slotsRemaining > 0 ? '🟡 Tight' : '🔴 Full'}
                 </span>
               </div>
               <div className="mt-2 space-y-1 text-sm">
@@ -127,7 +127,7 @@ function WeekCard({
               {/* Slot fill bar */}
               <div className="mt-2 w-full bg-gray-200 rounded-full h-1.5">
                 <div
-                  className={`h-1.5 rounded-full ${b.likely ? 'bg-green-500' : 'bg-orange-500'}`}
+                  className={`h-1.5 rounded-full ${b.slotsRemaining > 3 ? 'bg-green-500' : b.slotsRemaining > 0 ? 'bg-yellow-500' : 'bg-orange-500'}`}
                   style={{ width: `${Math.min(100, (b.familiesAhead / b.totalSlots) * 100)}%` }}
                 />
               </div>
@@ -138,7 +138,12 @@ function WeekCard({
 
       {/* All cabin demand for this week */}
       <div className="px-5 py-3">
-        <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">📊 All cabin demand this week</span>
+        <div className="flex items-baseline justify-between">
+          <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">📊 All cabin demand this week</span>
+          <span className="text-xs text-gray-400">
+            🛖 {demand.cabins.reduce((s, c) => s + c.slots, 0)} cabins total
+          </span>
+        </div>
         <div className="mt-2 grid grid-cols-4 gap-1.5">
           {demand.cabins.map((c) => {
             const isMine = breakdowns.some((b) => b.size === c.size);
@@ -294,6 +299,102 @@ function MethodologySection({
   );
 }
 
+// --- Feedback ---
+
+interface FeedbackEntry {
+  rank: number;
+  probability: number;
+  accurate: boolean | null;
+  comment: string;
+  timestamp: string;
+}
+
+function loadFeedbackLog(): FeedbackEntry[] {
+  try {
+    return JSON.parse(localStorage.getItem('mather-feedback') || '[]');
+  } catch { return []; }
+}
+
+function saveFeedbackEntry(entry: FeedbackEntry) {
+  const log = loadFeedbackLog();
+  log.push(entry);
+  localStorage.setItem('mather-feedback', JSON.stringify(log));
+}
+
+function FeedbackPanel({ rank, probability }: { rank: number; probability: number }) {
+  const [accurate, setAccurate] = useState<boolean | null>(null);
+  const [comment, setComment] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  // Check if already submitted for this rank
+  const alreadySubmitted = useMemo(() => {
+    return loadFeedbackLog().some((e) => e.rank === rank);
+  }, [rank]);
+
+  if (alreadySubmitted || submitted) {
+    return (
+      <div className="px-5 py-4 bg-green-50 border border-green-200 rounded-xl text-center text-sm text-green-800">
+        ✅ Thanks for the feedback! Enjoy Camp Mather 🏕️
+      </div>
+    );
+  }
+
+  return (
+    <div className="px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl text-sm">
+      <h3 className="font-semibold text-gray-800 mb-3">💬 Was this helpful?</h3>
+
+      <div className="mb-3">
+        <p className="text-gray-600 mb-2">Does the {probability}% score feel right for your situation?</p>
+        <div className="flex gap-2">
+          {[
+            { val: true, label: '👍 Looks right', cls: accurate === true ? 'bg-green-200 border-green-400' : 'bg-white border-gray-200 hover:bg-green-50' },
+            { val: false, label: '👎 Seems off', cls: accurate === false ? 'bg-orange-200 border-orange-400' : 'bg-white border-gray-200 hover:bg-orange-50' },
+          ].map((opt) => (
+            <button
+              key={String(opt.val)}
+              type="button"
+              className={`flex-1 py-2 rounded-lg border text-sm font-medium ${opt.cls}`}
+              onClick={() => setAccurate(opt.val)}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <textarea
+        className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+        rows={2}
+        placeholder="Any thoughts, suggestions, or camp stories? 🌲"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      />
+
+      <button
+        type="button"
+        className="mt-2 w-full py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 disabled:opacity-40"
+        disabled={accurate === null && !comment}
+        onClick={() => {
+          saveFeedbackEntry({
+            rank,
+            probability,
+            accurate,
+            comment,
+            timestamp: new Date().toISOString(),
+          });
+          setSubmitted(true);
+        }}
+      >
+        📮 Send feedback
+      </button>
+
+      <p className="mt-2 text-xs text-gray-400 text-center">
+        Stored locally on your device. No data sent anywhere.
+      </p>
+    </div>
+  );
+}
+
 // --- Main component ---
 
 function getRankFromUrl(): number | '' {
@@ -359,8 +460,8 @@ export default function MatherTracker() {
       </div>
 
       {/* Hero photos */}
-      <div className="mb-4 grid grid-cols-2 gap-3">
-        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-green-900/10">
+      <div className="mb-3 grid grid-cols-2 gap-2">
+        <div className="aspect-[3/2] rounded-lg overflow-hidden bg-green-900/10">
           <img
             src="/kevin-cabin.png"
             alt="Cabin at Camp Mather"
@@ -368,7 +469,7 @@ export default function MatherTracker() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
           />
         </div>
-        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-blue-900/10">
+        <div className="aspect-[3/2] rounded-lg overflow-hidden bg-blue-900/10">
           <img
             src="/falls.jpg"
             alt="Waterfall near Camp Mather"
@@ -378,26 +479,25 @@ export default function MatherTracker() {
         </div>
       </div>
 
-      <div className="mb-8 px-5 py-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-900 leading-relaxed text-center">
-        <p className="font-semibold text-base mb-1">
-          🏔️ Camp Mather — SF's Best Kept Family Secret! 🌊
+      <div className="mb-6 px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 leading-relaxed text-center">
+        <p className="font-semibold text-sm mb-0.5">
+          🏊🏽‍♂️ Camp Mather 🌊
         </p>
         <p>
-          Nestled near Yosemite since 1924, Camp Mather is San Francisco's own slice of paradise 🌲
-          Swimming, hiking, campfires, stargazing, and zero cell service 📵 — just pure family time.
-          If you know, you know. From a super fan who's been dreaming about it since last August 🤩
+          San Francisco's Family Camp since 1924 🌲 Swimming, hiking, campfires, stargazing, ice cream, and zero cell service 📵
+          From a 6 year returning mom who spaced this year 🤦‍♀️
         </p>
         <p className="mt-2 text-xs text-amber-700">
           🦌 This tool helps you figure out your odds of getting off the waitlist.
           Punch in your number and see the magic ✨
         </p>
+        <p className="mt-2 text-[10px] text-amber-600/70">
+          ⚠️ This is an unofficial fan project — not affiliated with SF Rec & Park or Camp Mather.
+          Probabilities are estimates based on public waitlist data and statistical modeling. Actual results may vary.
+          For official information visit <a href="https://sfrecpark.org/campmather" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-800">sfrecpark.org</a>.
+        </p>
       </div>
 
-      <header className="mb-8 text-center">
-        <p className="text-xs text-gray-400">
-          🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-        </p>
-      </header>
 
       {/* Input */}
       <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
@@ -495,6 +595,14 @@ export default function MatherTracker() {
             📤 Share my results
           </button>
 
+          {/* Methodology (collapsible) */}
+          <MethodologySection
+            mc={monteCarlo}
+            breakdown={weekBreakdown}
+            waitlist={waitlistData as Family[]}
+            status={myStatus}
+          />
+
           {/* Factors */}
           {factors.length > 0 && (
             <div className="flex flex-wrap gap-2">
@@ -540,13 +648,8 @@ export default function MatherTracker() {
             </div>
           </div>
 
-          {/* Methodology (collapsible) */}
-          <MethodologySection
-            mc={monteCarlo}
-            breakdown={weekBreakdown}
-            waitlist={waitlistData as Family[]}
-            status={myStatus}
-          />
+          {/* Feedback */}
+          <FeedbackPanel rank={myStatus.rank} probability={monteCarlo.probability} />
         </div>
       )}
 
@@ -582,12 +685,11 @@ export default function MatherTracker() {
       {/* Bottom photo banner */}
       <div className="mt-10 -mx-6 relative h-48 overflow-hidden">
         <img
-          src="/falls.jpg"
-          alt="Camp Mather waterfall"
+          src="/birch-lake.jpg"
+          alt="Birch Lake at Camp Mather"
           className="w-full h-full object-cover"
           onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-transparent" />
       </div>
 
       {/* Footer */}
@@ -600,8 +702,21 @@ export default function MatherTracker() {
         >
           banane [at] gmail.com
         </button>
-        <p className="text-xs text-gray-400 pt-2">&copy; 2026 banane.com</p>
+        <p className="text-xs text-gray-400 pt-2">
+          🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+        </p>
+        <p className="text-xs text-gray-400 pt-1">&copy; 2026 banane.com</p>
       </footer>
+
+      {/* Meadow photo */}
+      <div className="-mx-6 mt-6 overflow-hidden">
+        <img
+          src="/meadow.jpg"
+          alt="Meadow at Camp Mather"
+          className="w-full object-cover"
+          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+        />
+      </div>
     </div>
   );
 }
