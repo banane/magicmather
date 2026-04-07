@@ -16,7 +16,11 @@ import {
   type WeekDemand,
 } from '../mather-engine';
 import { type CabinSize, type Family, INVENTORY_PER_WEEK } from '../constants';
-import waitlistData from '../public/data.json';
+import rawData from '../public/data.json';
+
+// Support both old format (array) and new format ({ scrapedAt, families })
+const waitlistData: Family[] = Array.isArray(rawData) ? rawData : (rawData as { families: Family[] }).families;
+const scrapedAt: string | null = Array.isArray(rawData) ? null : (rawData as { scrapedAt: string }).scrapedAt;
 
 // --- Constants ---
 
@@ -455,7 +459,7 @@ export default function MatherTracker() {
         <footer className="text-center text-xs text-stone-400 pb-2 space-y-1">
           <p>Like this? Drop me a line:</p>
           <button type="button" className="text-blue-600 hover:text-blue-800 font-medium" onClick={() => { window.location.href = `mailto:${'banane'}@${'gmail.com'}`; }}>banane [at] gmail.com</button>
-          <p>🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
+          <p>🔄 Waitlist data scraped {new Date(scrapedAt ?? __BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(scrapedAt ?? __BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} · Checked daily at 8 AM PT</p>
           <p>&copy; 2026 banane.com</p>
         </footer>
 

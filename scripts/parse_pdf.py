@@ -132,9 +132,14 @@ def rows_to_families(rows):
 
 
 def write_json(families, output_path):
-    """Write families to JSON for mather-engine consumption."""
+    """Write families + scrape timestamp to JSON for mather-engine consumption."""
+    from datetime import datetime, timezone
+    payload = {
+        "scrapedAt": datetime.now(timezone.utc).isoformat(),
+        "families": families,
+    }
     with open(output_path, "w") as f:
-        json.dump(families, f, indent=2)
+        json.dump(payload, f, indent=2)
     print(f"  -> {output_path} ({len(families)} families)")
 
 
