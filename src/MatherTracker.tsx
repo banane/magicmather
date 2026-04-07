@@ -5,8 +5,8 @@ import {
   computeCabinDemand,
   computeWeekDemand,
   monteCarloForFamily,
-  FLAKE_RATE,
-  TIMEOUT_RATE,
+  CANCEL_RATE,
+  LAPSE_RATE,
   type SimulationResult,
   type WeekBreakdown,
   type MonteCarloSummary,
@@ -30,149 +30,122 @@ const EARLY_WEEKS = new Set([1, 2, 3]);
 const PEAK_WEEKS = new Set([4, 5, 6, 7, 8]);
 const LATE_WEEKS = new Set([9, 10, 11]);
 const LESS_POPULAR_SIZES = new Set<CabinSize>(['2c', '3c']);
+const CABIN_NAMES: Record<string, string> = {
+  '2c': '2-person', '3c': '3-person', '4c': '4-person', '6c': '6-person',
+};
 
-function weekLabel(week: number) { return WEEK_LABELS[week] ?? `Week ${week}`; }
+function weekLabel(w: number) { return WEEK_LABELS[w] ?? `Week ${w}`; }
 
-function seasonTag(week: number) {
-  if (EARLY_WEEKS.has(week)) return { label: 'Early Summer', emoji: '🌲', cls: 'bg-green-100 text-green-700' };
-  if (PEAK_WEEKS.has(week)) return { label: 'Peak Summer', emoji: '☀️', cls: 'bg-red-100 text-red-700' };
-  if (LATE_WEEKS.has(week)) return { label: 'Late Summer', emoji: '🌅', cls: 'bg-amber-100 text-amber-700' };
-  return { label: '', emoji: '', cls: '' };
+function seasonBadge(week: number) {
+  if (EARLY_WEEKS.has(week)) return { text: '🌲 Early Summer', cls: 'bg-emerald-100 text-emerald-800' };
+  if (PEAK_WEEKS.has(week)) return { text: '☀️ Peak Summer', cls: 'bg-amber-100 text-amber-800' };
+  return { text: '🌅 Late Summer', cls: 'bg-orange-100 text-orange-800' };
 }
 
-function seasonNote(week: number) {
-  if (EARLY_WEEKS.has(week)) return "🌲 SFUSD doesn't let out until 6/10 — most families can't make this week. Low competition! 🦌";
-  if (LATE_WEEKS.has(week)) return "🌅 End of summer — fewer options remain, but many families ahead get absorbed by earlier weeks 🪵";
-  return "☀️ Prime summer — highest demand across all cabin types 🏊 🦟";
+function seasonTip(week: number) {
+  if (EARLY_WEEKS.has(week)) return "🌲 Before SFUSD lets out 6/10 — low competition 🦌";
+  if (LATE_WEEKS.has(week)) return "🌅 End of summer — families ahead often absorbed by earlier weeks 🪵";
+  return "☀️ Peak demand across all cabin types 🏊 🦟";
 }
 
-function pctColor(p: number) {
-  if (p >= 75) return 'text-green-700';
-  if (p >= 40) return 'text-yellow-600';
-  return 'text-red-600';
+// Unified color scale for probabilities
+function pctStyle(p: number) {
+  if (p >= 75) return { text: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200' };
+  if (p >= 40) return { text: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200' };
+  return { text: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
 }
 
-function pctBg(p: number) {
-  if (p >= 75) return 'bg-green-50 border-green-200';
-  if (p >= 40) return 'bg-yellow-50 border-yellow-200';
-  return 'bg-orange-50 border-orange-200';
+// Waitlist position status: how does your rank compare to expected cancellations?
+function waitlistStatus(familiesAhead: number, expectedCancellations: number) {
+  if (familiesAhead === 0) return { label: '🟢 First in line', cls: 'border-emerald-200 bg-emerald-50', bar: 'bg-emerald-500' };
+  if (familiesAhead < expectedCancellations) return { label: '🟢 Good odds', cls: 'border-emerald-200 bg-emerald-50', bar: 'bg-emerald-500' };
+  if (familiesAhead < expectedCancellations * 2) return { label: '🟡 Possible', cls: 'border-amber-200 bg-amber-50', bar: 'bg-amber-500' };
+  return { label: '🔴 Long shot', cls: 'border-red-200 bg-red-50', bar: 'bg-red-400' };
+}
+
+// Shared card wrapper
+function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return <div className={`bg-white border border-stone-200 rounded-xl shadow-sm ${className}`}>{children}</div>;
 }
 
 // --- Week Card ---
 
-function WeekCard({
-  week,
-  breakdowns,
-  demand,
-  mcWeekPct,
-  independentPct,
-}: {
-  week: number;
-  breakdowns: WeekBreakdown[];
-  demand: WeekDemand;
-  mcWeekPct: number;
-  independentPct: number;
+function WeekCard({ week, breakdowns, demand, mcWeekPct, independentPct }: {
+  week: number; breakdowns: WeekBreakdown[]; demand: WeekDemand; mcWeekPct: number; independentPct: number;
 }) {
-  const season = seasonTag(week);
+  const season = seasonBadge(week);
+  const style = pctStyle(independentPct);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+    <Card>
       {/* Header */}
-      <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+      <div className="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-bold text-gray-800">📆 {weekLabel(week)}</h3>
-          <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full mt-1 ${season.cls}`}>
-            {season.emoji} {season.label}
-          </span>
+          <h3 className="font-bold text-lg text-stone-800">📆 {weekLabel(week)}</h3>
+          <span className={`inline-flex text-[11px] font-medium px-2 py-0.5 rounded-full mt-1 ${season.cls}`}>{season.text}</span>
         </div>
-        <div className="text-right space-y-1">
-          <div>
-            <span className={`text-2xl font-bold font-mono ${pctColor(independentPct)}`}>{independentPct}%</span>
-            <span className="block text-[10px] text-gray-400 uppercase tracking-wider">if only this week</span>
-          </div>
-          {mcWeekPct > 0 && (
-            <div className="text-xs text-gray-400">
-              🎯 {mcWeekPct}% assigned here across all weeks
-            </div>
-          )}
+        <div className="text-right">
+          <span className={`text-2xl font-bold font-mono ${style.text}`}>{independentPct}%</span>
+          <span className="block text-[10px] text-stone-400">if only this week</span>
+          {mcWeekPct > 0 && <span className="block text-[10px] text-stone-400">🎯 {mcWeekPct}% assigned here</span>}
         </div>
       </div>
 
-      {/* Your cabin choices for this week */}
-      <div className="px-5 py-3 border-b border-gray-50">
-        <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">🏕️ Your choices this week</span>
+      {/* Cabin choices */}
+      <div className="px-4 py-3 border-b border-stone-50">
+        <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">🏕️ Your choices</span>
         <div className="mt-2 grid gap-2" style={{ gridTemplateColumns: `repeat(${breakdowns.length}, 1fr)` }}>
-          {breakdowns.map((b) => (
-            <div key={b.size} className={`rounded-lg p-3 border-2 ${b.slotsRemaining > 3 ? 'border-green-300 bg-green-50' : b.slotsRemaining > 0 ? 'border-yellow-300 bg-yellow-50' : 'border-orange-300 bg-orange-50'}`}>
-              <div className="flex items-baseline justify-between">
-                <span className="font-bold text-gray-800 uppercase">{b.size}</span>
-                <span className={`text-xs font-semibold ${b.slotsRemaining > 3 ? 'text-green-700' : b.slotsRemaining > 0 ? 'text-yellow-700' : 'text-orange-700'}`}>
-                  {b.slotsRemaining > 3 ? '🟢 Open' : b.slotsRemaining > 0 ? '🟡 Tight' : '🔴 Full'}
-                </span>
-              </div>
-              <div className="mt-2 space-y-1 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">🏅 Your rank</span>
-                  <span className="font-mono font-semibold text-blue-700">#{b.effectiveRank}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">👥 Families ahead</span>
-                  <span className="font-semibold text-gray-700">{b.familiesAhead}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">🛏️ Slots left</span>
-                  <span className="font-semibold text-gray-700">{b.slotsRemaining} / {b.totalSlots}</span>
-                </div>
-              </div>
-              {/* Slot fill bar */}
-              <div className="mt-2 w-full bg-gray-200 rounded-full h-1.5">
-                <div
-                  className={`h-1.5 rounded-full ${b.slotsRemaining > 3 ? 'bg-green-500' : b.slotsRemaining > 0 ? 'bg-yellow-500' : 'bg-orange-500'}`}
-                  style={{ width: `${Math.min(100, (b.familiesAhead / b.totalSlots) * 100)}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* All cabin demand for this week */}
-      <div className="px-5 py-3">
-        <div className="flex items-baseline justify-between">
-          <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">📊 All cabin demand this week</span>
-          <span className="text-xs text-gray-400">
-            🛖 {demand.cabins.reduce((s, c) => s + c.slots, 0)} cabins total
-          </span>
-        </div>
-        <div className="mt-2 grid grid-cols-4 gap-1.5">
-          {demand.cabins.map((c) => {
-            const isMine = breakdowns.some((b) => b.size === c.size);
+          {breakdowns.map((b) => {
+            const s = waitlistStatus(b.familiesAhead, b.expectedCancellations);
             return (
-              <div key={c.size} className={`rounded-md p-1.5 text-center ${isMine ? 'ring-2 ring-blue-400 bg-blue-50' : 'bg-gray-50'}`}>
-                <span className="block text-[10px] text-gray-400 uppercase">{c.size}</span>
-                <span className="block text-sm font-mono font-bold">{c.families}</span>
-                <div className="mt-0.5 w-full bg-gray-200 rounded-full h-1">
-                  <div
-                    className={`h-1 rounded-full ${c.ratio > 1 ? 'bg-red-400' : c.ratio > 0.7 ? 'bg-orange-400' : 'bg-green-400'}`}
-                    style={{ width: `${Math.min(100, c.ratio * 100)}%` }}
-                  />
+              <div key={b.size} className={`rounded-lg p-3 border ${s.cls}`}>
+                <div className="flex items-baseline justify-between">
+                  <span className="font-bold text-stone-800 uppercase text-sm">{b.size}</span>
+                  <span className="text-[11px] font-semibold">{s.label}</span>
                 </div>
-                <span className="block text-[9px] text-gray-400">{c.slots} slots</span>
+                <div className="mt-2 space-y-0.5 text-xs">
+                  <div className="flex justify-between"><span className="text-stone-500">🏅 Your position</span><span className="font-mono font-semibold text-blue-700">#{b.effectiveRank}</span></div>
+                  <div className="flex justify-between"><span className="text-stone-500">👥 Ahead of you</span><span className="font-semibold">{b.familiesAhead}</span></div>
+                  <div className="flex justify-between"><span className="text-stone-500">🛖 Cabins occupied</span><span className="font-semibold">{b.totalCabins}</span></div>
+                  <div className="flex justify-between"><span className="text-stone-500">🔄 Est. cancellations</span><span className="font-semibold">{b.expectedCancellations}</span></div>
+                </div>
+                <div className="mt-2 w-full bg-stone-200 rounded-full h-1.5">
+                  <div className={`h-1.5 rounded-full ${s.bar}`} style={{ width: `${Math.min(100, b.expectedCancellations > 0 ? (b.familiesAhead / (b.expectedCancellations * 2)) * 100 : 100)}%` }} />
+                </div>
               </div>
             );
           })}
         </div>
-        <p className="mt-2 text-xs text-gray-400 italic">{seasonNote(week)}</p>
       </div>
-    </div>
+
+      {/* All cabin demand */}
+      <div className="px-4 py-3">
+        <div className="flex items-baseline justify-between">
+          <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">📊 Week demand</span>
+          <span className="text-[11px] text-stone-400">🛖 {demand.cabinDemand.reduce((s, c) => s + c.cabins, 0)} cabins (all occupied)</span>
+        </div>
+        <div className="mt-1.5 grid grid-cols-4 gap-1">
+          {demand.cabinDemand.map((c) => {
+            const isMine = breakdowns.some((b) => b.size === c.size);
+            return (
+              <div key={c.size} className={`rounded-md p-1.5 text-center ${isMine ? 'ring-2 ring-blue-400 bg-blue-50' : 'bg-stone-50'}`}>
+                <span className="block text-[10px] text-stone-400 uppercase">{c.size}</span>
+                <span className="block text-sm font-mono font-bold">{c.families}</span>
+                <div className="mt-0.5 w-full bg-stone-200 rounded-full h-1">
+                  <div className={`h-1 rounded-full ${c.ratio > 1 ? 'bg-red-400' : c.ratio > 0.7 ? 'bg-amber-400' : 'bg-emerald-400'}`} style={{ width: `${Math.min(100, (c.ratio / 10) * 100)}%` }} />
+                </div>
+                <span className="block text-[9px] text-stone-400">~{c.expectedCancellations} may cancel</span>
+              </div>
+            );
+          })}
+        </div>
+        <p className="mt-1.5 text-[11px] text-stone-400 italic">{seasonTip(week)}</p>
+      </div>
+    </Card>
   );
 }
 
 // --- Factors ---
-
-const CABIN_SIZE_LABELS: Record<string, string> = {
-  '2c': '2-person', '3c': '3-person', '4c': '4-person', '6c': '6-person',
-};
 
 interface Factor { emoji: string; text: string; type: 'positive' | 'negative' | 'neutral' }
 
@@ -180,72 +153,41 @@ function buildFactors(breakdown: WeekBreakdown[]): Factor[] {
   const factors: Factor[] = [];
   const weeks = [...new Set(breakdown.map((b) => b.week))];
   const sizes = [...new Set(breakdown.map((b) => b.size))];
-
   const earlyWeeks = weeks.filter((w) => EARLY_WEEKS.has(w));
   const peakWeeks = weeks.filter((w) => PEAK_WEEKS.has(w));
   const lateWeeks = weeks.filter((w) => LATE_WEEKS.has(w));
 
-  if (earlyWeeks.length > 0) {
-    factors.push({ emoji: '🌲', type: 'positive',
-      text: `Early-summer weeks are undersubscribed — SFUSD lets out 6/10, so most families can't go before mid-June 🦌`,
-    });
-  }
-  if (peakWeeks.length > 0 && peakWeeks.length === weeks.length) {
-    factors.push({ emoji: '☀️', type: 'negative',
-      text: 'All your weeks are peak summer 🏊 — highest competition for every cabin type 🦟',
-    });
-  }
-  if (lateWeeks.length > 0 && lateWeeks.length === weeks.length) {
-    factors.push({ emoji: '🌅', type: 'negative',
-      text: 'End-of-summer only — fewer slots remain by then, since families ahead claimed earlier weeks 🪵',
-    });
-  } else if (lateWeeks.length > 0 && (earlyWeeks.length > 0 || peakWeeks.length > 0)) {
-    factors.push({ emoji: '🌲', type: 'positive',
-      text: "Your weeks span different parts of summer — you're not competing with the same pool every week 🏕️",
-    });
-  }
+  if (earlyWeeks.length > 0)
+    factors.push({ emoji: '🌲', type: 'positive', text: 'Early-summer weeks — undersubscribed before SFUSD lets out 6/10' });
+  if (peakWeeks.length > 0 && peakWeeks.length === weeks.length)
+    factors.push({ emoji: '☀️', type: 'negative', text: 'All peak summer — highest competition' });
+  if (lateWeeks.length > 0 && lateWeeks.length === weeks.length)
+    factors.push({ emoji: '🌅', type: 'negative', text: 'Late summer only — fewer slots remain' });
+  else if (lateWeeks.length > 0 && (earlyWeeks.length > 0 || peakWeeks.length > 0))
+    factors.push({ emoji: '🏕️', type: 'positive', text: 'Weeks span different parts of summer' });
 
-  if (sizes.length >= 2) {
-    const sizeNames = sizes.map((s) => CABIN_SIZE_LABELS[s] || s).join(' + ');
-    factors.push({ emoji: '🛖', type: 'positive',
-      text: `Flexible on cabin size (${sizeNames}). If one fills up, the other is a fallback 🏕️`,
-    });
-  } else if (sizes.length === 1 && !LESS_POPULAR_SIZES.has(sizes[0])) {
-    factors.push({ emoji: '🛖', type: 'negative',
-      text: `Only ${CABIN_SIZE_LABELS[sizes[0]] || sizes[0]} cabins — the most in-demand. Adding 3-person or 2-person would boost your odds 🤔`,
-    });
-  }
+  if (sizes.length >= 2)
+    factors.push({ emoji: '🛖', type: 'positive', text: `Flexible: ${sizes.map((s) => CABIN_NAMES[s] || s).join(' + ')}` });
+  else if (sizes.length === 1 && !LESS_POPULAR_SIZES.has(sizes[0]))
+    factors.push({ emoji: '🛖', type: 'negative', text: `Only ${CABIN_NAMES[sizes[0]]} — most in-demand` });
 
-  if (sizes.some((s) => LESS_POPULAR_SIZES.has(s))) {
-    const names = sizes.filter((s) => LESS_POPULAR_SIZES.has(s)).map((s) => CABIN_SIZE_LABELS[s] || s);
-    factors.push({ emoji: '💎', type: 'positive',
-      text: `${names.join(' and ')} cabins are significantly less competitive — fewer families request them 🌿`,
-    });
-  }
+  if (sizes.some((s) => LESS_POPULAR_SIZES.has(s)))
+    factors.push({ emoji: '💎', type: 'positive', text: `${sizes.filter((s) => LESS_POPULAR_SIZES.has(s)).map((s) => CABIN_NAMES[s]).join(', ')} — less competitive` });
 
-  const totalOptions = breakdown.length;
-  if (totalOptions >= 6) {
-    factors.push({ emoji: '🎣', type: 'positive',
-      text: `${totalOptions} total week + cabin combinations — lots of bites at the apple 🍎`,
-    });
-  } else if (totalOptions <= 2) {
-    factors.push({ emoji: '🪵', type: 'negative',
-      text: `Only ${totalOptions} option${totalOptions > 1 ? 's' : ''} — consider adding more weeks or cabin types 🤞`,
-    });
-  }
+  const n = breakdown.length;
+  if (n >= 6) factors.push({ emoji: '🎣', type: 'positive', text: `${n} total options — lots of chances` });
+  else if (n <= 2) factors.push({ emoji: '🪵', type: 'negative', text: `Only ${n} option${n > 1 ? 's' : ''} — consider adding more` });
 
   return factors;
 }
 
-// --- Collapsible methodology ---
+// --- Methodology ---
 
-function MethodologySection({
-  mc, breakdown, waitlist, status,
-}: {
-  mc: MonteCarloSummary; breakdown: WeekBreakdown[]; waitlist: Family[]; status: SimulationResult;
+function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
+  mc: MonteCarloSummary; breakdown: WeekBreakdown[]; waitlist: Family[]; status: SimulationResult; forceOpen?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-
+  const isOpen = open || !!forceOpen;
   const familiesAhead = waitlist.filter((f) => f.rank < status.rank);
   const avgOptions = familiesAhead.length > 0
     ? familiesAhead.reduce((sum, f) => sum + f.preferences.length, 0) / familiesAhead.length : 0;
@@ -253,469 +195,244 @@ function MethodologySection({
   const competingFamilies = new Set<number>();
   for (const b of breakdown) {
     for (const f of waitlist) {
-      if (f.rank < status.rank && f.preferences.some((p) => p.week === b.week && p.size === b.size)) {
+      if (f.rank < status.rank && f.preferences.some((p) => p.week === b.week && p.size === b.size))
         competingFamilies.add(f.rank);
-      }
     }
   }
-
-  const dropRate = FLAKE_RATE + TIMEOUT_RATE;
-  const totalCleared = mc.avgAbsorbedElsewhere + mc.avgDropouts;
+  const combinedRate = CANCEL_RATE + LAPSE_RATE;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-      <button
-        type="button"
-        className="w-full px-5 py-3 flex items-center justify-between text-sm font-semibold text-gray-700 hover:bg-gray-50"
-        onClick={() => setOpen((v) => !v)}
-      >
+    <Card>
+      <button type="button" className="w-full px-4 py-3 flex items-center justify-between text-sm font-semibold text-stone-700 hover:bg-stone-50" onClick={() => setOpen((v) => !v)}>
         <span>🔬 How we calculated this</span>
-        <span className="text-gray-400">{open ? '▲' : '▼'}</span>
+        <span className="text-stone-400 text-xs">{isOpen ? '▲' : '▼'}</span>
       </button>
-      {open && (
-        <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed space-y-2 border-t border-gray-100 pt-3">
-          <p>
-            🎲 We ran <strong>{mc.runs.toLocaleString()} Monte Carlo simulations</strong>.
-            Everyone on the waitlist has paid a <strong>$200 deposit</strong>, so commitment is high.
-            Each family ahead still has a {Math.round(FLAKE_RATE * 100)}% chance of declining (schedule conflict, changed plans 🏔️) +{' '}
-            {Math.round(TIMEOUT_RATE * 100)}% chance of missing the 24h decision window (on vacation? 🏖️).
-            That's {Math.round(dropRate * 100)}% combined. You always accept 🤞.
-          </p>
-          <p>
-            👨‍👩‍👧‍👦 <strong>{competingFamilies.size} families</strong> ahead overlap with your choices.
-            On average they each have <strong>{avgOptions.toFixed(1)} options</strong> — when any comes through, they grab their cabin and leave your pool 🏕️
-          </p>
-          <p>
-            🔄 Per run, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> get absorbed by other weeks 🌊 +{' '}
-            <strong className="text-purple-700">~{mc.avgDropouts}</strong> drop out 👋 ={' '}
-            <strong className="text-green-700">{totalCleared} cleared</strong> of {competingFamilies.size} competitors 🌲
-          </p>
-          <p className="pt-1 border-t border-gray-100">
-            📄 Source: <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a>
-          </p>
+      {isOpen && (
+        <div className="px-4 pb-4 text-xs text-stone-600 leading-relaxed space-y-2 border-t border-stone-100 pt-3">
+          <p>🎰 <strong>What's a Monte Carlo simulation?</strong> Instead of one fixed prediction, we run the waitlist process {mc.runs.toLocaleString()} times, each with random variation — different families cancel, processing order shifts slightly. Your probability is the percentage of runs where you got a cabin. More runs = more accurate odds.</p>
+          <p>🏕️ <strong>All cabins are full.</strong> Every family ahead of you already has a confirmed reservation and paid a <strong>$200 deposit</strong>. The only way you get a cabin is if someone cancels. Plans do change: job moves, family conflicts, schedule shifts 🏔️ We estimate {Math.round(CANCEL_RATE * 100)}% actively cancel + {Math.round(LAPSE_RATE * 100)}% lapse when Rec & Park contacts them ({Math.round(combinedRate * 100)}% combined cancel rate per cabin).</p>
+          <p>🎲 Each run: we roll the dice on every occupied cabin — does the holder cancel? That creates <strong>~{mc.avgCancellations} openings</strong> across all weeks. Then waitlisted families fill those openings in rank order.</p>
+          <p>👨‍👩‍👧‍👦 <strong>{competingFamilies.size} waitlisted families</strong> ahead of you want the same weeks/cabins. Avg <strong>{avgOptions.toFixed(1)} options</strong> each — when any of their choices opens up, they take it and leave your pool 🏕️</p>
+          <p>🔄 Per run, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> competitors get absorbed by other weeks they also wanted 🌊 — leaving fewer people competing for your specific weeks.</p>
+          <p className="pt-1 border-t border-stone-100">📄 <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a></p>
         </div>
       )}
-    </div>
+    </Card>
   );
 }
 
 // --- Feedback ---
 
-interface FeedbackEntry {
-  rank: number;
-  probability: number;
-  accurate: boolean | null;
-  comment: string;
-  timestamp: string;
-}
+interface FeedbackEntry { rank: number; probability: number; accurate: boolean | null; comment: string; timestamp: string }
 
 function loadFeedbackLog(): FeedbackEntry[] {
-  try {
-    return JSON.parse(localStorage.getItem('mather-feedback') || '[]');
-  } catch { return []; }
-}
-
-function saveFeedbackEntry(entry: FeedbackEntry) {
-  const log = loadFeedbackLog();
-  log.push(entry);
-  localStorage.setItem('mather-feedback', JSON.stringify(log));
+  try { return JSON.parse(localStorage.getItem('mather-feedback') || '[]'); } catch { return []; }
 }
 
 function FeedbackPanel({ rank, probability }: { rank: number; probability: number }) {
   const [accurate, setAccurate] = useState<boolean | null>(null);
   const [comment, setComment] = useState('');
   const [submitted, setSubmitted] = useState(false);
-
-  // Check if already submitted for this rank
-  const alreadySubmitted = useMemo(() => {
-    return loadFeedbackLog().some((e) => e.rank === rank);
-  }, [rank]);
+  const alreadySubmitted = useMemo(() => loadFeedbackLog().some((e) => e.rank === rank), [rank]);
 
   if (alreadySubmitted || submitted) {
-    return (
-      <div className="px-5 py-4 bg-green-50 border border-green-200 rounded-xl text-center text-sm text-green-800">
-        ✅ Thanks for the feedback! Enjoy Camp Mather 🏕️
-      </div>
-    );
+    return <Card className="p-4 text-center text-sm text-emerald-800 bg-emerald-50">✅ Thanks for the feedback! Enjoy Camp Mather 🏕️</Card>;
   }
 
   return (
-    <div className="px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl text-sm">
-      <h3 className="font-semibold text-gray-800 mb-3">💬 Was this helpful?</h3>
-
-      <div className="mb-3">
-        <p className="text-gray-600 mb-2">Does the {probability}% score feel right for your situation?</p>
-        <div className="flex gap-2">
-          {[
-            { val: true, label: '👍 Looks right', cls: accurate === true ? 'bg-green-200 border-green-400' : 'bg-white border-gray-200 hover:bg-green-50' },
-            { val: false, label: '👎 Seems off', cls: accurate === false ? 'bg-orange-200 border-orange-400' : 'bg-white border-gray-200 hover:bg-orange-50' },
-          ].map((opt) => (
-            <button
-              key={String(opt.val)}
-              type="button"
-              className={`flex-1 py-2 rounded-lg border text-sm font-medium ${opt.cls}`}
-              onClick={() => setAccurate(opt.val)}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
+    <Card className="p-4">
+      <h3 className="font-semibold text-sm text-stone-800 mb-3">💬 Was this helpful?</h3>
+      <p className="text-xs text-stone-600 mb-2">Does {probability}% feel right?</p>
+      <div className="flex gap-2 mb-3">
+        {[
+          { val: true, label: '👍 Looks right', active: 'bg-emerald-100 border-emerald-300' },
+          { val: false, label: '👎 Seems off', active: 'bg-orange-100 border-orange-300' },
+        ].map((opt) => (
+          <button key={String(opt.val)} type="button"
+            className={`flex-1 py-2 rounded-lg border text-xs font-medium ${accurate === opt.val ? opt.active : 'bg-white border-stone-200 hover:bg-stone-50'}`}
+            onClick={() => setAccurate(opt.val)}>{opt.label}</button>
+        ))}
       </div>
-
-      <textarea
-        className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-none"
-        rows={2}
-        placeholder="Any thoughts, suggestions, or camp stories? 🌲"
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-      />
-
-      <button
-        type="button"
-        className="mt-2 w-full py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 disabled:opacity-40"
+      <textarea className="w-full p-2.5 border border-stone-200 rounded-lg text-xs focus:ring-2 focus:ring-blue-500 outline-none resize-none" rows={2}
+        placeholder="Thoughts, suggestions, camp stories? 🌲" value={comment} onChange={(e) => setComment(e.target.value)} />
+      <button type="button" className="mt-2 w-full py-2 rounded-lg bg-stone-800 text-white text-xs font-medium hover:bg-stone-900 disabled:opacity-40"
         disabled={accurate === null && !comment}
         onClick={() => {
-          saveFeedbackEntry({
-            rank,
-            probability,
-            accurate,
-            comment,
-            timestamp: new Date().toISOString(),
-          });
-          setSubmitted(true);
-        }}
-      >
-        📮 Send feedback
-      </button>
-
-      <p className="mt-2 text-xs text-gray-400 text-center">
-        Stored locally on your device. No data sent anywhere.
-      </p>
-    </div>
+          const log = loadFeedbackLog(); log.push({ rank, probability, accurate, comment, timestamp: new Date().toISOString() });
+          localStorage.setItem('mather-feedback', JSON.stringify(log)); setSubmitted(true);
+        }}>📮 Send feedback</button>
+      <p className="mt-1.5 text-[10px] text-stone-400 text-center">Stored locally — no data sent anywhere</p>
+    </Card>
   );
 }
 
-// --- Main component ---
+// --- Main ---
 
 function getRankFromUrl(): number | '' {
   const params = new URLSearchParams(window.location.search);
   const val = params.get('rank') || params.get('r');
-  if (val) {
-    const n = parseInt(val, 10);
-    if (!isNaN(n) && n > 0) return n;
-  }
+  if (val) { const n = parseInt(val, 10); if (!isNaN(n) && n > 0) return n; }
   return '';
 }
 
 function updateUrl(rank: number | '') {
   const url = new URL(window.location.href);
-  if (rank === '') {
-    url.searchParams.delete('rank');
-  } else {
-    url.searchParams.set('rank', String(rank));
-  }
+  if (rank === '') url.searchParams.delete('rank'); else url.searchParams.set('rank', String(rank));
   window.history.replaceState({}, '', url.toString());
 }
 
 export default function MatherTracker() {
   const [userRank, setUserRank] = useState<number | ''>(getRankFromUrl);
-
+  const [methodologyOpen, setMethodologyOpen] = useState(false);
   const results = useMemo(() => simulate(waitlistData as Family[]), []);
   const myStatus = results.find((f) => f.rank === userRank);
-
-  const weekBreakdown = useMemo(() => {
-    if (!userRank) return [];
-    return computeWeekBreakdown(userRank, waitlistData as Family[]);
-  }, [userRank]);
-
-  const monteCarlo = useMemo(() => {
-    if (!userRank) return null;
-    return monteCarloForFamily(userRank, waitlistData as Family[]);
-  }, [userRank]);
-
-  const myWeeks = useMemo(() => {
-    if (!weekBreakdown.length) return [];
-    return [...new Set(weekBreakdown.map((b) => b.week))].sort((a, b) => a - b);
-  }, [weekBreakdown]);
-
-  const myWeekDemand = useMemo(
-    () => computeWeekDemand(myWeeks, waitlistData as Family[]),
-    [myWeeks],
-  );
-
+  const weekBreakdown = useMemo(() => userRank ? computeWeekBreakdown(userRank, waitlistData as Family[]) : [], [userRank]);
+  const monteCarlo = useMemo(() => userRank ? monteCarloForFamily(userRank, waitlistData as Family[]) : null, [userRank]);
+  const myWeeks = useMemo(() => weekBreakdown.length ? [...new Set(weekBreakdown.map((b) => b.week))].sort((a, b) => a - b) : [], [weekBreakdown]);
+  const myWeekDemand = useMemo(() => computeWeekDemand(myWeeks, waitlistData as Family[]), [myWeeks]);
   const cabinDemand = useMemo(() => computeCabinDemand(waitlistData as Family[]), []);
   const factors = useMemo(() => buildFactors(weekBreakdown), [weekBreakdown]);
-
   const mySizes = [...new Set(weekBreakdown.map((b) => b.size))];
-  const positive = factors.filter((f) => f.type === 'positive');
-  const negative = factors.filter((f) => f.type === 'negative');
 
   return (
-    <div className="p-6 max-w-3xl mx-auto font-sans">
-      {/* Hero */}
-      <div className="mb-6 text-center">
-        <p className="text-4xl">🌲🏕️🌲</p>
-        <h1 className="text-3xl font-bold text-blue-800 mt-2">Magic Mather 2026</h1>
-        <p className="text-gray-600 mt-1">🎯 Waitlist Probability Engine</p>
-      </div>
+    <div className="min-h-screen bg-stone-50">
+      <div className="p-5 max-w-2xl mx-auto font-sans space-y-4">
 
-      {/* Hero photos */}
-      <div className="mb-3 grid grid-cols-2 gap-2">
-        <div className="aspect-[3/2] rounded-lg overflow-hidden bg-green-900/10">
-          <img
-            src="/kevin-cabin.png"
-            alt="Cabin at Camp Mather"
-            className="w-full h-full object-cover"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
+        {/* Hero */}
+        <div className="text-center pt-2">
+          <p className="text-3xl">🌲🏕️🌲</p>
+          <h1 className="font-chalk text-3xl text-stone-800 mt-1">Magic Mather 2026</h1>
+          <p className="text-stone-500 text-sm font-sans">🎯 Waitlist Probability Engine</p>
         </div>
-        <div className="aspect-[3/2] rounded-lg overflow-hidden bg-blue-900/10">
-          <img
-            src="/falls.jpg"
-            alt="Waterfall near Camp Mather"
-            className="w-full h-full object-cover"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
+
+        {/* About with flanking photos */}
+        <div className="grid grid-cols-[80px_1fr_80px] sm:grid-cols-[100px_1fr_100px] gap-2 items-center">
+          <div className="rounded-xl overflow-hidden bg-stone-200 h-full">
+            <img src="/kevin-cabin.png" alt="Cabin at Camp Mather" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+          </div>
+          <div className="px-4 py-4 bg-amber-50/80 border border-amber-200/60 rounded-xl text-center">
+          <p className="font-chalk text-xl text-amber-900">🏊🏽‍♂️ Camp Mather 🌊</p>
+          <p className="text-sm text-amber-800 mt-1 leading-relaxed">
+            San Francisco's Family Camp since 1924 🌲 Swimming, hiking, campfires, stargazing, ice cream, and zero cell service 📵
+            From a 6 year returning mom who spaced this year 🤦‍♀️
+          </p>
+          <p className="text-sm text-amber-700 mt-2">🦌 Punch in your waitlist number to see your odds ✨</p>
+          <p className="text-sm text-stone-600 mt-2">
+            😊 Unofficial fan project — not affiliated with SF Rec & Park.
+            Estimates based on <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="underline">public waitlist data</a> and{' '}
+            <button type="button" className="underline hover:text-stone-800" onClick={() => { setMethodologyOpen(true); document.getElementById('methodology')?.scrollIntoView({ behavior: 'smooth' }); }}>statistical modeling</button>.
+          </p>
+          </div>
+          <div className="rounded-xl overflow-hidden bg-stone-200 h-full">
+            <img src="/falls.jpg" alt="Waterfall near Camp Mather" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+          </div>
         </div>
-      </div>
 
-      <div className="mb-6 px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 leading-relaxed text-center">
-        <p className="font-semibold text-sm mb-0.5">
-          🏊🏽‍♂️ Camp Mather 🌊
-        </p>
-        <p>
-          San Francisco's Family Camp since 1924 🌲 Swimming, hiking, campfires, stargazing, ice cream, and zero cell service 📵
-          From a 6 year returning mom who spaced this year 🤦‍♀️
-        </p>
-        <p className="mt-2 text-xs text-amber-700">
-          🦌 This tool helps you figure out your odds of getting off the waitlist.
-          Punch in your number and see the magic ✨
-        </p>
-        <p className="mt-2 text-[10px] text-amber-600/70">
-          ⚠️ This is an unofficial fan project — not affiliated with SF Rec & Park or Camp Mather.
-          Probabilities are estimates based on public waitlist data and statistical modeling. Actual results may vary.
-          For official information visit <a href="https://sfrecpark.org/campmather" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-800">sfrecpark.org</a>.
-        </p>
-      </div>
+        {/* Input */}
+        <Card className="p-4">
+          <label className="block font-semibold text-sm text-stone-700 mb-2">🔍 Enter your Waitlist Number</label>
+          <input type="number" className="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-lg font-mono"
+            placeholder="e.g. 832" value={userRank}
+            onChange={(e) => { const rank = e.target.value === '' ? '' : parseInt(e.target.value, 10); setUserRank(rank); updateUrl(rank); }} />
+        </Card>
 
-
-      {/* Input */}
-      <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Enter your Waitlist Number:
-        </label>
-        <input
-          type="number"
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          placeholder="e.g. 142"
-          value={userRank}
-          onChange={(e) => {
-            const val = e.target.value;
-            const rank = val === '' ? '' : parseInt(val, 10);
-            setUserRank(rank);
-            updateUrl(rank);
-          }}
-        />
-      </div>
-
-      {myStatus && monteCarlo && (
-        <div className="mt-8 space-y-5">
-
-          {/* Overall probability banner */}
-          <div className={`p-6 rounded-xl border-2 ${pctBg(monteCarlo.probability)}`}>
-            <div className="flex items-baseline gap-3 mb-1">
-              <span className={`text-5xl font-bold font-mono ${pctColor(monteCarlo.probability)}`}>
-                {monteCarlo.probability}%
-              </span>
-              <h2 className="text-xl font-bold text-gray-800">chance of getting a cabin 🤞</h2>
-            </div>
-            <p className="text-sm text-gray-600">
-              🏕️ Waitlist <strong>#{myStatus.rank}</strong> &middot;{' '}
-              🗓️ {myWeeks.length} week{myWeeks.length !== 1 ? 's' : ''} &middot;{' '}
-              🛖 {mySizes.length} cabin type{mySizes.length !== 1 ? 's' : ''} ({mySizes.join(', ')}) &middot;{' '}
-              🎣 {weekBreakdown.length} total options
-            </p>
-
-            {/* Per-week probability bars */}
-            {Object.keys(monteCarlo.assignedWeekCounts).length > 0 && (
-              <div className="mt-4 pt-3 border-t border-gray-200/60">
-                <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">🎲 Probability by week</span>
-                <div className="mt-2 space-y-1.5">
-                  {myWeeks.map((week) => {
-                    const count = monteCarlo.assignedWeekCounts[week] || 0;
-                    const pct = Math.round((count / monteCarlo.runs) * 100);
-                    return (
-                      <div key={week} className="flex items-center gap-2 text-sm">
-                        <span className="w-28 text-gray-600 text-xs shrink-0">{weekLabel(week)}</span>
-                        <div className="flex-1 bg-gray-200/60 rounded-full h-2.5">
-                          <div className="h-2.5 rounded-full bg-blue-500" style={{ width: `${pct}%` }} />
-                        </div>
-                        <span className={`w-10 text-right text-xs font-mono font-semibold ${pctColor(pct)}`}>{pct}%</span>
-                      </div>
-                    );
-                  })}
+        {myStatus && monteCarlo && (
+          <>
+            {/* Probability */}
+            {(() => { const s = pctStyle(monteCarlo.probability); return (
+              <Card className={`p-5 border-2 ${s.border} ${s.bg}`}>
+                <div className="flex items-baseline gap-3 mb-1">
+                  <span className={`text-4xl font-bold font-mono ${s.text}`}>{monteCarlo.probability}%</span>
+                  <h2 className="font-bold text-lg text-stone-800">chance of getting a cabin 🤞</h2>
                 </div>
-              </div>
+                <p className="text-xs text-stone-500">
+                  🏕️ #{myStatus.rank} · 🗓️ {myWeeks.length} week{myWeeks.length !== 1 ? 's' : ''} · 🛖 {mySizes.join(', ')} · 🎣 {weekBreakdown.length} options
+                </p>
+              </Card>
+            ); })()}
+
+            {/* Methodology */}
+            <div id="methodology"><MethodologySection mc={monteCarlo} breakdown={weekBreakdown} waitlist={waitlistData as Family[]} status={myStatus} forceOpen={methodologyOpen} /></div>
+
+            {/* Factors */}
+            {factors.length > 0 && (
+              <Card className="p-4">
+                <h3 className="font-semibold text-xs text-stone-500 uppercase tracking-wider mb-2">💡 Factors</h3>
+                <div className="space-y-1.5">
+                  {factors.map((f, i) => (
+                    <div key={i} className={`flex gap-2 text-xs py-1.5 px-2.5 rounded-lg ${f.type === 'positive' ? 'bg-emerald-50 text-emerald-800' : f.type === 'negative' ? 'bg-red-50 text-red-800' : 'bg-blue-50 text-blue-800'}`}>
+                      <span className="shrink-0">{f.emoji}</span><span>{f.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
             )}
-          </div>
 
-          {/* Share button */}
-          <button
-            type="button"
-            className="w-full py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-2"
-            onClick={() => {
-              const weekLines = myWeeks.map((w) => {
-                const bds = weekBreakdown.filter((b) => b.week === w);
-                const indyPct = monteCarlo.weekIndependentProbability[w] ?? 0;
-                const cabins = bds.map((b) => `${b.size} (#${b.effectiveRank}, ${b.slotsRemaining}/${b.totalSlots} slots)`).join(', ');
-                return `  ${weekLabel(w)}: ${indyPct}% — ${cabins}`;
-              }).join('\n');
+            {/* Week cards */}
+            <h2 className="font-bold text-base text-stone-800 pt-1">🗓️ Your Weeks</h2>
+            {myWeeks.map((week) => {
+              const wbd = weekBreakdown.filter((b) => b.week === week);
+              const dem = myWeekDemand.find((d) => d.week === week);
+              const ct = monteCarlo.assignedWeekCounts[week] || 0;
+              return dem ? <WeekCard key={week} week={week} breakdowns={wbd} demand={dem}
+                mcWeekPct={Math.round((ct / monteCarlo.runs) * 100)}
+                independentPct={monteCarlo.weekIndependentProbability[week] ?? 0} /> : null;
+            })}
 
-              const text = [
-                `🏕️ Camp Mather 2026 — Waitlist #${myStatus.rank}`,
-                `🤞 ${monteCarlo.probability}% overall chance of getting a cabin`,
-                `🛖 ${mySizes.join(', ')} · ${myWeeks.length} weeks · ${weekBreakdown.length} options`,
-                '',
-                '🗓️ Per-week odds (if only that week):',
-                weekLines,
-                '',
-                `🔬 Based on ${monteCarlo.runs.toLocaleString()} Monte Carlo simulations`,
-                `📄 Source: sfrecpark.org waitlist PDF`,
-                `🎯 Try it: ${window.location.origin}${window.location.pathname}?rank=${myStatus.rank}`,
-              ].join('\n');
+            {/* Share */}
+            <button type="button"
+              className="w-full py-2.5 rounded-xl border border-stone-200 bg-white text-xs font-medium text-stone-600 hover:bg-stone-50"
+              onClick={() => {
+                const weekLines = myWeeks.map((w) => {
+                  const bds = weekBreakdown.filter((b) => b.week === w);
+                  const indyPct = monteCarlo.weekIndependentProbability[w] ?? 0;
+                  return `  ${weekLabel(w)}: ${indyPct}% — ${bds.map((b) => `${b.size} (#${b.effectiveRank}, ${b.familiesAhead} ahead, ~${b.expectedCancellations} may cancel)`).join(', ')}`;
+                }).join('\n');
+                const text = [`🏕️ Camp Mather 2026 — Waitlist #${myStatus.rank}`, `🤞 ${monteCarlo.probability}% chance`, `🛖 ${mySizes.join(', ')} · ${myWeeks.length} weeks · ${weekBreakdown.length} options`, '', '🗓️ Per-week:', weekLines, '', `🎯 ${window.location.origin}${window.location.pathname}?rank=${myStatus.rank}`].join('\n');
+                if (navigator.share) navigator.share({ text }).catch(() => {}); else { navigator.clipboard.writeText(text); alert('📋 Copied!'); }
+              }}>📤 Share results</button>
 
-              if (navigator.share) {
-                navigator.share({ text }).catch(() => {});
-              } else {
-                navigator.clipboard.writeText(text);
-                alert('📋 Copied to clipboard!');
-              }
-            }}
-          >
-            📤 Share my results
-          </button>
+            {/* Feedback */}
+            <FeedbackPanel rank={myStatus.rank} probability={monteCarlo.probability} />
+          </>
+        )}
 
-          {/* Methodology (collapsible) */}
-          <MethodologySection
-            mc={monteCarlo}
-            breakdown={weekBreakdown}
-            waitlist={waitlistData as Family[]}
-            status={myStatus}
-          />
-
-          {/* Factors */}
-          {factors.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {positive.map((f, i) => (
-                <span key={`p${i}`} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-green-100 text-green-800">
-                  {f.emoji} {f.text}
-                </span>
-              ))}
-              {negative.map((f, i) => (
-                <span key={`n${i}`} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-orange-100 text-orange-800">
-                  {f.emoji} {f.text}
-                </span>
-              ))}
-              {factors.filter((f) => f.type === 'neutral').map((f, i) => (
-                <span key={`u${i}`} className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-blue-100 text-blue-800">
-                  {f.emoji} {f.text}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Week cards */}
-          <div>
-            <h2 className="text-lg font-bold text-gray-800 mb-3">🗓️ Your Weeks</h2>
-            <div className="space-y-4">
-              {myWeeks.map((week) => {
-                const weekBreakdowns = weekBreakdown.filter((b) => b.week === week);
-                const demand = myWeekDemand.find((d) => d.week === week);
-                const count = monteCarlo.assignedWeekCounts[week] || 0;
-                const mcPct = Math.round((count / monteCarlo.runs) * 100);
-                const indyPct = monteCarlo.weekIndependentProbability[week] ?? 0;
-                return demand ? (
-                  <WeekCard
-                    key={week}
-                    week={week}
-                    breakdowns={weekBreakdowns}
-                    demand={demand}
-                    mcWeekPct={mcPct}
-                    independentPct={indyPct}
-                  />
-                ) : null;
-              })}
-            </div>
-          </div>
-
-          {/* Feedback */}
-          <FeedbackPanel rank={myStatus.rank} probability={monteCarlo.probability} />
-        </div>
-      )}
-
-      {/* Overall cabin demand (always visible) */}
-      <div className="mt-10">
-        <h2 className="text-lg font-bold text-gray-800 mb-3">🏠 Overall Cabin Demand</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {cabinDemand.map((d) => (
-            <div key={d.size} className="bg-white border rounded-xl p-4 shadow-sm">
-              <span className="block text-xs text-gray-500 uppercase tracking-wider">{d.size} cabin</span>
-              <span className="block text-2xl font-mono font-bold mt-1">{d.totalFamilies}</span>
-              <span className="block text-xs text-gray-500">families want this</span>
-              <div className="mt-2 pt-2 border-t">
-                <span className="block text-xs text-gray-500">{d.totalSlots} total slots</span>
-                <div className="mt-1 w-full bg-gray-200 rounded-full h-2">
-                  <div
-                    className={`h-2 rounded-full ${d.ratio > 1 ? 'bg-red-400' : d.ratio > 0.7 ? 'bg-orange-400' : 'bg-green-400'}`}
-                    style={{ width: `${Math.min(100, d.ratio * 100)}%` }}
-                  />
+        {/* Overall demand */}
+        <div>
+          <h2 className="font-bold text-base text-stone-800 mb-3">🏠 Overall Cabin Demand</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {cabinDemand.map((d) => (
+              <Card key={d.size} className="p-3">
+                <span className="block text-[11px] text-stone-400 uppercase tracking-wider">{d.size}</span>
+                <span className="block text-xl font-mono font-bold mt-0.5">{d.totalFamilies}</span>
+                <span className="block text-[11px] text-stone-400">families waitlisted</span>
+                <div className="mt-1.5 pt-1.5 border-t border-stone-100">
+                  <span className="block text-[11px] text-stone-400">{d.totalCabins} cabins (all full)</span>
+                  <span className="block text-[11px] text-stone-400">~{d.expectedCancellations} expected cancellations</span>
+                  <span className="block text-[11px] mt-0.5 font-medium">
+                    {d.totalFamilies > d.expectedCancellations
+                      ? <span className="text-red-600">{Math.round(d.totalFamilies / d.expectedCancellations)}x more waitlisted than expected openings</span>
+                      : <span className="text-emerald-600">More expected openings than waitlisted families</span>}
+                  </span>
                 </div>
-                <span className="block text-xs mt-1 font-medium">
-                  {d.ratio > 1
-                    ? <span className="text-red-600">{d.ratio.toFixed(1)}x oversubscribed</span>
-                    : <span className="text-green-600">{Math.round((1 - d.ratio) * 100)}% available</span>
-                  }
-                </span>
-              </div>
-            </div>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Bottom photo banner */}
-      <div className="mt-10 -mx-6 relative h-48 overflow-hidden">
-        <img
-          src="/birch-lake.jpg"
-          alt="Birch Lake at Camp Mather"
-          className="w-full h-full object-cover"
-          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
-        />
-      </div>
+        {/* Bottom photos */}
+        <div className="-mx-5 overflow-hidden"><img src="/meadow.jpg" alt="Meadow" className="w-full h-44 object-cover" onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }} /></div>
 
-      {/* Footer */}
-      <footer className="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-500 space-y-1">
-        <p>Like this? Have questions? Drop me a line:</p>
-        <button
-          type="button"
-          className="text-blue-600 hover:text-blue-800 font-medium cursor-pointer"
-          onClick={() => { window.location.href = `mailto:${'banane'}@${'gmail.com'}`; }}
-        >
-          banane [at] gmail.com
-        </button>
-        <p className="text-xs text-gray-400 pt-2">
-          🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-        </p>
-        <p className="text-xs text-gray-400 pt-1">&copy; 2026 banane.com</p>
-      </footer>
+        {/* Footer */}
+        <footer className="text-center text-xs text-stone-400 pb-2 space-y-1">
+          <p>Like this? Drop me a line:</p>
+          <button type="button" className="text-blue-600 hover:text-blue-800 font-medium" onClick={() => { window.location.href = `mailto:${'banane'}@${'gmail.com'}`; }}>banane [at] gmail.com</button>
+          <p>🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
+          <p>&copy; 2026 banane.com</p>
+        </footer>
 
-      {/* Meadow photo */}
-      <div className="-mx-6 mt-6 overflow-hidden">
-        <img
-          src="/meadow.jpg"
-          alt="Meadow at Camp Mather"
-          className="w-full object-cover"
-          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
-        />
+        {/* Meadow */}
+        <div className="-mx-5 -mb-5 overflow-hidden"><img src="/birch-lake.jpg" alt="Birch Lake" className="w-full object-cover" onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }} /></div>
       </div>
     </div>
   );
