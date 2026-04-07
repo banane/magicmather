@@ -265,45 +265,31 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
 
 // --- Feedback ---
 
-interface FeedbackEntry { rank: number; probability: number; accurate: boolean | null; comment: string; timestamp: string }
+const FORM_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSe752OjhbdSypi-pZYkvdGDkLjL7816Bb457sZ9Hmk63DbkVQ/viewform';
+const FORM_ENTRY_RANK = 'entry.1018896596';
+const FORM_ENTRY_PROBABILITY = 'entry.906568157';
 
-function loadFeedbackLog(): FeedbackEntry[] {
-  try { return JSON.parse(localStorage.getItem('mather-feedback') || '[]'); } catch { return []; }
+function feedbackUrl(rank: number, probability: number): string {
+  const params = new URLSearchParams({
+    [FORM_ENTRY_RANK]: String(rank),
+    [FORM_ENTRY_PROBABILITY]: String(probability),
+  });
+  return `${FORM_BASE}?${params.toString()}`;
 }
 
 function FeedbackPanel({ rank, probability }: { rank: number; probability: number }) {
-  const [accurate, setAccurate] = useState<boolean | null>(null);
-  const [comment, setComment] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const alreadySubmitted = useMemo(() => loadFeedbackLog().some((e) => e.rank === rank), [rank]);
-
-  if (alreadySubmitted || submitted) {
-    return <Card className="p-4 text-center text-sm text-emerald-800 bg-emerald-50">✅ Thanks for the feedback! Enjoy Camp Mather 🏕️</Card>;
-  }
-
   return (
-    <Card className="p-4">
-      <h3 className="font-semibold text-sm text-stone-800 mb-3">💬 Was this helpful?</h3>
-      <p className="text-xs text-stone-600 mb-2">Does {probability}% feel right?</p>
-      <div className="flex gap-2 mb-3">
-        {[
-          { val: true, label: '👍 Looks right', active: 'bg-emerald-100 border-emerald-300' },
-          { val: false, label: '👎 Seems off', active: 'bg-orange-100 border-orange-300' },
-        ].map((opt) => (
-          <button key={String(opt.val)} type="button"
-            className={`flex-1 py-2 rounded-lg border text-xs font-medium ${accurate === opt.val ? opt.active : 'bg-white border-stone-200 hover:bg-stone-50'}`}
-            onClick={() => setAccurate(opt.val)}>{opt.label}</button>
-        ))}
-      </div>
-      <textarea className="w-full p-2.5 border border-stone-200 rounded-lg text-xs focus:ring-2 focus:ring-blue-500 outline-none resize-none" rows={2}
-        placeholder="Thoughts, suggestions, camp stories? 🌲" value={comment} onChange={(e) => setComment(e.target.value)} />
-      <button type="button" className="mt-2 w-full py-2 rounded-lg bg-stone-800 text-white text-xs font-medium hover:bg-stone-900 disabled:opacity-40"
-        disabled={accurate === null && !comment}
-        onClick={() => {
-          const log = loadFeedbackLog(); log.push({ rank, probability, accurate, comment, timestamp: new Date().toISOString() });
-          localStorage.setItem('mather-feedback', JSON.stringify(log)); setSubmitted(true);
-        }}>📮 Send feedback</button>
-      <p className="mt-1.5 text-[10px] text-stone-400 text-center">Stored locally — no data sent anywhere</p>
+    <Card className="p-4 text-center">
+      <h3 className="font-semibold text-sm text-stone-800 mb-2">💬 Was this helpful?</h3>
+      <p className="text-xs text-stone-500 mb-3">Your rank and probability will be pre-filled</p>
+      <a
+        href={feedbackUrl(rank, probability)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-stone-800 text-white text-sm font-medium hover:bg-stone-900"
+      >
+        📮 Share feedback
+      </a>
     </Card>
   );
 }
