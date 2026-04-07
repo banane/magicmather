@@ -5,11 +5,11 @@ import {
   computeCabinDemand,
   computeWeekDemand,
   monteCarloForFamily,
-  RESERVATION_CANCEL_RATE,
+  RESERVATION_CANCEL_EARLY,
+  RESERVATION_CANCEL_LATE,
   WAITLIST_LAPSE_RATE,
   WAITLIST_FLAKE_BASE,
   WAITLIST_FLAKE_LATE,
-  waitlistFlakeRate,
   type SimulationResult,
   type WeekBreakdown,
   type MonteCarloSummary,
@@ -121,6 +121,45 @@ function WeekCard({ week, breakdowns, demand, mcWeekPct, independentPct }: {
         </div>
       </div>
 
+      {/* Competitor spread */}
+      {breakdowns.some((b) => b.spread.total > 0) && (
+        <div className="px-4 py-3 border-b border-stone-50">
+          <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">🔍 Competitor spread</span>
+          <div className="mt-2 space-y-2">
+            {breakdowns.filter((b) => b.spread.total > 0).map((b) => {
+              const sp = b.spread;
+              const spreadOut = sp.total - sp.onlyThisWeek;
+              const spreadPct = Math.round((spreadOut / sp.total) * 100);
+              return (
+                <div key={b.size} className="text-xs text-stone-600">
+                  <div className="flex items-baseline gap-1.5 mb-1">
+                    <span className="font-semibold text-stone-800 uppercase">{b.size}</span>
+                    <span>— {sp.total} families ahead</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-1">
+                    <div className="bg-red-50 rounded-md p-1.5 text-center">
+                      <span className="block font-mono font-bold text-red-700">{sp.onlyThisWeek}</span>
+                      <span className="block text-[10px] text-red-600">only want this week 😬</span>
+                    </div>
+                    <div className="bg-amber-50 rounded-md p-1.5 text-center">
+                      <span className="block font-mono font-bold text-amber-700">{sp.haveEarlierWeeks}</span>
+                      <span className="block text-[10px] text-amber-600">also want earlier weeks 🏃</span>
+                    </div>
+                    <div className="bg-emerald-50 rounded-md p-1.5 text-center">
+                      <span className="block font-mono font-bold text-emerald-700">{spreadOut}</span>
+                      <span className="block text-[10px] text-emerald-600">spread to other weeks ✨</span>
+                    </div>
+                  </div>
+                  <p className="mt-1 text-[11px] text-stone-400">
+                    {spreadPct}% of competitors have other options (avg {sp.avgOptions} each) — likely to get absorbed before your week
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* All cabin demand */}
       <div className="px-4 py-3">
         <div className="flex items-baseline justify-between">
@@ -202,8 +241,6 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
         competingFamilies.add(f.rank);
     }
   }
-  const earlyDropout = WAITLIST_LAPSE_RATE + WAITLIST_FLAKE_BASE;
-  const lateDropout = WAITLIST_LAPSE_RATE + WAITLIST_FLAKE_LATE;
 
   return (
     <Card>
@@ -213,12 +250,12 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
       </button>
       {isOpen && (
         <div className="px-4 pb-4 text-xs text-stone-600 leading-relaxed space-y-2 border-t border-stone-100 pt-3">
-          <p>🎰 <strong>What's a Monte Carlo simulation?</strong> Instead of one fixed prediction, we run the waitlist process {mc.runs.toLocaleString()} times, each with random variation — different families cancel, processing order shifts slightly. Your probability is the percentage of runs where you got a cabin. More runs = more accurate odds.</p>
-          <p>🏕️ <strong>All cabins are full.</strong> Every reservation holder paid a <strong>$200 deposit</strong>. But plans change — job moves, family conflicts, schedule shifts 🏔️ We estimate <strong>{Math.round(RESERVATION_CANCEL_RATE * 100)}%</strong> of current holders give up their reservation.</p>
-          <p>🎲 Each run: we roll the dice on every occupied cabin — does the holder cancel? That creates <strong>~{mc.avgCancellations} openings</strong> across all weeks. Then waitlisted families get emailed offers in rank order.</p>
-          <p>📧 Not every waitlisted family takes their offer either: <strong>{Math.round(WAITLIST_LAPSE_RATE * 100)}%</strong> don't answer the email in time + <strong>{Math.round(WAITLIST_FLAKE_BASE * 100)}–{Math.round(WAITLIST_FLAKE_LATE * 100)}%</strong> made other plans (higher for later weeks — families have been waiting longer). That's {Math.round(earlyDropout * 100)}% dropout for early summer, up to {Math.round(lateDropout * 100)}% by late August. Each pass bumps the next person in line. You always accept 🤞</p>
-          <p>👨‍👩‍👧‍👦 <strong>{competingFamilies.size} waitlisted families</strong> ahead of you want the same weeks/cabins. Avg <strong>{avgOptions.toFixed(1)} options</strong> each — when any of their choices opens up, they take it and leave your pool 🏕️</p>
-          <p>🔄 Per run, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> competitors get absorbed by other weeks they also wanted 🌊 — leaving fewer people competing for your specific weeks.</p>
+          <p>🎰 <strong>What's a Monte Carlo simulation?</strong> We run the waitlist process {mc.runs.toLocaleString()} times with random variation. Your probability = the % of runs where you got a cabin.</p>
+          <p>📅 <strong>Temporal model:</strong> We process weeks in chronological order (week 1 first, then 2, etc.). As each week resolves, families who got offered a cabin — whether they accepted or declined — are removed from the waitlist entirely. By the time your weeks come up, the competitive pool has already shrunk.</p>
+          <p>🏕️ <strong>All cabins are full.</strong> Reservation holders paid $200. Cancel rates vary by timing: <strong>{Math.round(RESERVATION_CANCEL_EARLY * 100)}%</strong> for weeks far out (plans haven't changed yet) up to <strong>{Math.round(RESERVATION_CANCEL_LATE * 100)}%</strong> for imminent weeks (life happened) 🏔️ That creates <strong>~{mc.avgCancellations} openings</strong> per run across all weeks.</p>
+          <p>📧 <strong>Waitlist offers:</strong> When an opening comes up, the next family in line gets a 24h email. <strong>{Math.round(WAITLIST_LAPSE_RATE * 100)}%</strong> miss the email + <strong>{Math.round(WAITLIST_FLAKE_BASE * 100)}–{Math.round(WAITLIST_FLAKE_LATE * 100)}%</strong> made other plans (more for later weeks — they've been waiting longer). Accept or decline, they're off the list. The offer cascades to the next person. You always accept 🤞</p>
+          <p>👨‍👩‍👧‍👦 <strong>{competingFamilies.size} families</strong> ahead overlap your weeks/cabins. But <strong>~{mc.avgRemovedBeforeYourWeeks}</strong> get resolved in earlier weeks before yours even come up — accepted other weeks, declined offers, or let the window lapse.</p>
+          <p>🔄 Of remaining competitors, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> get absorbed by other weeks they also wanted 🌊 — each one who takes a different week frees up yours.</p>
           <p className="pt-1 border-t border-stone-100">📄 <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a></p>
         </div>
       )}

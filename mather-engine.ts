@@ -1,29 +1,39 @@
 import { type CabinSize, type Family, INVENTORY_PER_WEEK, TOTAL_WEEKS } from './constants';
 
-type Inventory = Record<number, Record<CabinSize, number>>;
-
 // --- Simulation config ---
 
 const MONTE_CARLO_RUNS = 2000;
 
-// Rate for EXISTING reservation holders giving up their cabin
-const RESERVATION_CANCEL_RATE = 0.20;  // 20% of current holders give up their reservation
+// Reservation holders: cancel rate varies by how far out the week is.
+// Right after deposit → low. As the week approaches → higher.
+const RESERVATION_CANCEL_EARLY = 0.10; // Weeks far in the future: 10%
+const RESERVATION_CANCEL_LATE = 0.30;  // Weeks approaching soon: 30%
 
-// Rates for WAITLISTED families when offered a spot
-const WAITLIST_LAPSE_RATE = 0.15;      // 15% won't answer the email in time
+function reservationCancelRate(week: number): number {
+  // Later weeks are further out when waitlist opens → lower initial cancel rate
+  // Earlier weeks are imminent → higher cancel rate sooner
+  // Week 1 = most imminent = highest cancel rate, week 11 = furthest = lowest
+  const t = Math.max(0, Math.min(1, (TOTAL_WEEKS - week) / (TOTAL_WEEKS - 1)));
+  return RESERVATION_CANCEL_EARLY + t * (RESERVATION_CANCEL_LATE - RESERVATION_CANCEL_EARLY);
+}
 
-// Flake rate scales up as the week approaches — by late summer, many waitlisted
-// families have made other plans since they've been waiting months.
-const WAITLIST_FLAKE_BASE = 0.05;      // Early summer: 5% made other plans
-const WAITLIST_FLAKE_LATE = 0.25;      // Late summer: 25% made other plans
+// Waitlisted families: when offered a spot
+const WAITLIST_LAPSE_RATE = 0.15; // 15% don't answer the 24h email
 
-// Linear interpolation: week 1 = base, week 11 = late
+// Flake rate scales: early summer families are eager, late summer families have made other plans
+const WAITLIST_FLAKE_BASE = 0.05; // Early summer: 5%
+const WAITLIST_FLAKE_LATE = 0.25; // Late summer: 25%
+
 function waitlistFlakeRate(week: number): number {
   const t = Math.max(0, Math.min(1, (week - 1) / (TOTAL_WEEKS - 1)));
   return WAITLIST_FLAKE_BASE + t * (WAITLIST_FLAKE_LATE - WAITLIST_FLAKE_BASE);
 }
 
-export { RESERVATION_CANCEL_RATE, WAITLIST_LAPSE_RATE, WAITLIST_FLAKE_BASE, WAITLIST_FLAKE_LATE, waitlistFlakeRate, MONTE_CARLO_RUNS };
+export {
+  RESERVATION_CANCEL_EARLY, RESERVATION_CANCEL_LATE, reservationCancelRate,
+  WAITLIST_LAPSE_RATE, WAITLIST_FLAKE_BASE, WAITLIST_FLAKE_LATE, waitlistFlakeRate,
+  MONTE_CARLO_RUNS,
+};
 
 // --- Types ---
 
@@ -36,27 +46,14 @@ export interface SimulationResult extends Family {
 
 export interface MonteCarloSummary {
   runs: number;
-  reservationCancelRate: number;
-  waitlistLapseRate: number;
-  waitlistFlakeBase: number;
-  waitlistFlakeLate: number;
   probability: number;
   assignedWeekCounts: Record<number, number>;
   mostLikelyWeek?: number;
   mostLikelySize?: CabinSize;
-  avgCancellations: number;       // avg reservation cancellations per run
+  avgCancellations: number;
   avgAbsorbedElsewhere: number;
+  avgRemovedBeforeYourWeeks: number; // families resolved in earlier weeks
   weekIndependentProbability: Record<number, number>;
-}
-
-// --- Inventory helpers ---
-
-export function buildFullInventory(): Inventory {
-  const inventory: Inventory = {};
-  for (let week = 1; week <= TOTAL_WEEKS; week++) {
-    inventory[week] = { ...INVENTORY_PER_WEEK };
-  }
-  return inventory;
 }
 
 // --- Seeded PRNG ---
@@ -71,96 +68,128 @@ function createRng(seed: number) {
   };
 }
 
-// --- Core simulation ---
-// All cabins are occupied. For each cabin, roll whether the holder cancels.
-// Cancellations create openings. Waitlisted families fill openings in rank order.
+// --- Temporal simulation ---
+// Processes weeks in chronological order. For each week:
+//   1. Roll cancellations for that week's occupied cabins
+//   2. Offer openings to waitlisted families (rank order) who want that week
+//   3. Accept or decline → removed from waitlist entirely
+//   4. Remaining families carry forward to next week with a shrinking competitor pool
 
 const RANK_JITTER = 15;
 
-// Waitlist dropout is per-week: lapse (fixed) + flake (scales with season)
-
-function simulateOnce(
+function simulateTemporalOnce(
   waitlist: Family[],
-  reservationRate: number,
   rng: () => number,
   protectedRank?: number,
-): { assignments: Map<number, { week: number; size: CabinSize }>; totalCancellations: number } {
-  const fullInventory = buildFullInventory();
-
-  // Step 1: Roll cancellations — each reservation holder may give up their cabin
-  const openings: Inventory = {};
+): {
+  assignments: Map<number, { week: number; size: CabinSize }>;
+  totalCancellations: number;
+  removedBeforeWeek: Record<number, number>; // week -> families removed before this week
+} {
+  const assignments = new Map<number, { week: number; size: CabinSize }>();
+  const resolved = new Set<number>(); // ranks removed from waitlist (accepted or declined)
   let totalCancellations = 0;
+  const removedBeforeWeek: Record<number, number> = {};
+
   for (let week = 1; week <= TOTAL_WEEKS; week++) {
-    openings[week] = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
+    removedBeforeWeek[week] = resolved.size;
+
+    // Step 1: Roll cancellations for this week's cabins
+    const cancelRate = reservationCancelRate(week);
+    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
+
     for (const size of ['2c', '3c', '4c', '6c'] as CabinSize[]) {
-      const totalCabins = fullInventory[week][size];
-      for (let c = 0; c < totalCabins; c++) {
-        if (rng() < reservationRate) {
-          openings[week][size]++;
+      for (let c = 0; c < INVENTORY_PER_WEEK[size]; c++) {
+        if (rng() < cancelRate) {
+          openings[size]++;
           totalCancellations++;
         }
       }
     }
-  }
 
-  // Step 2: Waitlisted families compete for openings in rank order (with jitter)
-  const assignments = new Map<number, { week: number; size: CabinSize }>();
+    // Step 2: Find eligible waitlisted families for this week
+    // Must: still on waitlist AND requested this week
+    const eligible = waitlist
+      .filter((f) => !resolved.has(f.rank) && f.preferences.some((p) => p.week === week))
+      .map((f) => ({
+        family: f,
+        sortKey: f.rank === protectedRank
+          ? f.rank
+          : f.rank + (rng() * 2 - 1) * RANK_JITTER,
+      }))
+      .sort((a, b) => a.sortKey - b.sortKey);
 
-  const jittered = waitlist.map((f) => ({
-    family: f,
-    sortKey: f.rank === protectedRank
-      ? f.rank
-      : f.rank + (rng() * 2 - 1) * RANK_JITTER,
-  }));
-  jittered.sort((a, b) => a.sortKey - b.sortKey);
+    // Step 3: Offer openings to eligible families
+    for (const { family } of eligible) {
+      if (resolved.has(family.rank)) continue; // may have been resolved earlier in this loop
 
-  for (const { family } of jittered) {
-    for (const choice of family.preferences) {
-      if (openings[choice.week]?.[choice.size] > 0) {
-        // Opening available — waitlisted family gets emailed an offer.
-        // Protected family (the user) always accepts.
-        // Other waitlisted families: may lapse (fixed) or flake (higher for later weeks).
-        const weekDropout = WAITLIST_LAPSE_RATE + waitlistFlakeRate(choice.week);
-        if (family.rank !== protectedRank && rng() < weekDropout) {
-          break; // Didn't respond or declined — opening goes to next person
+      const weekPrefs = family.preferences.filter((p) => p.week === week);
+
+      for (const pref of weekPrefs) {
+        if (openings[pref.size] > 0) {
+          // Opening available — email sent to family
+          const dropout = WAITLIST_LAPSE_RATE + waitlistFlakeRate(week);
+
+          if (family.rank !== protectedRank && rng() < dropout) {
+            // Declined or didn't respond — off the waitlist, opening stays
+            resolved.add(family.rank);
+            break;
+          }
+
+          // Accepted — cabin assigned, off the waitlist
+          openings[pref.size]--;
+          assignments.set(family.rank, { week, size: pref.size });
+          resolved.add(family.rank);
+          break;
         }
-        openings[choice.week][choice.size]--;
-        assignments.set(family.rank, { week: choice.week, size: choice.size });
-        break;
       }
     }
+
+    // Families whose ALL preferences are for this week or earlier and weren't offered
+    // naturally have nothing left — but they stay "on" the waitlist technically.
+    // They just won't match any future week. No explicit cleanup needed.
   }
 
-  return { assignments, totalCancellations };
+  return { assignments, totalCancellations, removedBeforeWeek };
 }
 
-// --- Deterministic simulation (no cancellations, for baseline comparison) ---
+// --- Deterministic simulation ---
 
 export function simulate(waitlist: Family[]): SimulationResult[] {
-  // In the deterministic view, we estimate expected cancellations as the "openings"
-  const expectedRate = RESERVATION_CANCEL_RATE;
-  const openings: Inventory = {};
+  const resolved = new Set<number>();
+  const results: SimulationResult[] = [];
+
+  // Process week by week with expected cancellations
+  const resultMap = new Map<number, SimulationResult>();
+
   for (let week = 1; week <= TOTAL_WEEKS; week++) {
-    openings[week] = {} as Record<CabinSize, number>;
+    const cancelRate = reservationCancelRate(week);
+    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
     for (const size of ['2c', '3c', '4c', '6c'] as CabinSize[]) {
-      openings[week][size] = Math.round(INVENTORY_PER_WEEK[size] * expectedRate);
+      openings[size] = Math.round(INVENTORY_PER_WEEK[size] * cancelRate);
+    }
+
+    const eligible = waitlist.filter(
+      (f) => !resolved.has(f.rank) && f.preferences.some((p) => p.week === week),
+    );
+
+    for (const family of eligible) {
+      if (resolved.has(family.rank)) continue;
+      const weekPrefs = family.preferences.filter((p) => p.week === week);
+      for (const pref of weekPrefs) {
+        if (openings[pref.size] > 0) {
+          openings[pref.size]--;
+          resultMap.set(family.rank, {
+            ...family, isSuccessful: true, assignedWeek: week, assignedSize: pref.size,
+          });
+          resolved.add(family.rank);
+          break;
+        }
+      }
     }
   }
 
-  return waitlist.map((family) => {
-    for (const choice of family.preferences) {
-      if (openings[choice.week]?.[choice.size] > 0) {
-        openings[choice.week][choice.size]--;
-        return {
-          ...family,
-          isSuccessful: true,
-          assignedWeek: choice.week,
-          assignedSize: choice.size,
-        };
-      }
-    }
-    return { ...family, isSuccessful: false };
-  });
+  return waitlist.map((f) => resultMap.get(f.rank) ?? { ...f, isSuccessful: false });
 }
 
 // --- Monte Carlo ---
@@ -169,7 +198,6 @@ export function monteCarloForFamily(
   rank: number,
   waitlist: Family[],
   runs = MONTE_CARLO_RUNS,
-  reservationRate = RESERVATION_CANCEL_RATE,
 ): MonteCarloSummary {
   let successes = 0;
   const weekCounts: Record<number, number> = {};
@@ -179,6 +207,8 @@ export function monteCarloForFamily(
   const myFamily = waitlist.find((f) => f.rank === rank);
   const myPrefs = myFamily?.preferences ?? [];
   const myWeekSizes = new Set(myPrefs.map((p) => `${p.week}:${p.size}`));
+  const myWeeks = [...new Set(myPrefs.map((p) => p.week))].sort((a, b) => a - b);
+  const myEarliestWeek = myWeeks[0] ?? 1;
 
   const competitors = waitlist.filter(
     (f) => f.rank < rank && f.preferences.some((p) => myWeekSizes.has(`${p.week}:${p.size}`)),
@@ -187,12 +217,15 @@ export function monteCarloForFamily(
 
   let totalAbsorbed = 0;
   let totalCancellationsSum = 0;
+  let totalRemovedBefore = 0;
 
   for (let i = 0; i < runs; i++) {
-    const { assignments, totalCancellations } = simulateOnce(waitlist, reservationRate, rng, rank);
+    const { assignments, totalCancellations, removedBeforeWeek } =
+      simulateTemporalOnce(waitlist, rng, rank);
     totalCancellationsSum += totalCancellations;
-    const result = assignments.get(rank);
+    totalRemovedBefore += removedBeforeWeek[myEarliestWeek] ?? 0;
 
+    const result = assignments.get(rank);
     if (result) {
       successes++;
       weekCounts[result.week] = (weekCounts[result.week] || 0) + 1;
@@ -223,12 +256,11 @@ export function monteCarloForFamily(
     if (count > maxSizeCount) { maxSizeCount = count; mostLikelySize = size as CabinSize; }
   }
 
-  // Per-week independent probability
+  // Per-week independent probability (also temporal)
   const weekIndependentProbability: Record<number, number> = {};
-  const uniqueWeeks = [...new Set(myPrefs.map((p) => p.week))];
   const indyRuns = Math.min(runs, 500);
 
-  for (const targetWeek of uniqueWeeks) {
+  for (const targetWeek of myWeeks) {
     const weekOnlyPrefs = myPrefs.filter((p) => p.week === targetWeek);
     const hypotheticalFamily: Family = { rank, preferences: weekOnlyPrefs };
     const hypotheticalWaitlist = waitlist.map((f) => f.rank === rank ? hypotheticalFamily : f);
@@ -236,7 +268,7 @@ export function monteCarloForFamily(
     const indyRng = createRng(rank * 7919 + targetWeek * 31 + 99);
     let indySuccesses = 0;
     for (let i = 0; i < indyRuns; i++) {
-      const { assignments } = simulateOnce(hypotheticalWaitlist, reservationRate, indyRng, rank);
+      const { assignments } = simulateTemporalOnce(hypotheticalWaitlist, indyRng, rank);
       if (assignments.has(rank)) indySuccesses++;
     }
     weekIndependentProbability[targetWeek] = Math.round((indySuccesses / indyRuns) * 100);
@@ -244,21 +276,26 @@ export function monteCarloForFamily(
 
   return {
     runs,
-    reservationCancelRate: reservationRate,
-    waitlistLapseRate: WAITLIST_LAPSE_RATE,
-    waitlistFlakeBase: WAITLIST_FLAKE_BASE,
-    waitlistFlakeLate: WAITLIST_FLAKE_LATE,
     probability,
     assignedWeekCounts: weekCounts,
     mostLikelyWeek,
     mostLikelySize,
     avgCancellations: Math.round(totalCancellationsSum / runs),
     avgAbsorbedElsewhere: Math.round(totalAbsorbed / runs),
+    avgRemovedBeforeYourWeeks: Math.round(totalRemovedBefore / runs),
     weekIndependentProbability,
   };
 }
 
 // --- Week breakdown ---
+
+export interface CompetitorSpread {
+  total: number;           // families ahead wanting this week+size
+  onlyThisWeek: number;    // of those, families who ONLY want this week (stuck here)
+  haveEarlierWeeks: number; // of those, also want earlier weeks (likely resolved before you)
+  haveLaterWeeks: number;  // of those, also want later weeks
+  avgOptions: number;      // avg total options per competitor (higher = more likely to get absorbed)
+}
 
 export interface WeekBreakdown {
   week: number;
@@ -267,7 +304,8 @@ export interface WeekBreakdown {
   expectedCancellations: number;
   familiesAhead: number;
   effectiveRank: number;
-  netOpenings: number;  // expected cancellations minus families ahead (can be negative)
+  netOpenings: number;
+  spread: CompetitorSpread;
 }
 
 export function computeWeekBreakdown(
@@ -277,15 +315,37 @@ export function computeWeekBreakdown(
   const family = waitlist.find((f) => f.rank === rank);
   if (!family) return [];
 
-  const combinedRate = RESERVATION_CANCEL_RATE;
-
   return family.preferences.map((pref) => {
-    const familiesAhead = waitlist.filter(
+    const competitors = waitlist.filter(
       (f) => f.rank < rank && f.preferences.some((p) => p.week === pref.week && p.size === pref.size),
-    ).length;
+    );
+
+    const familiesAhead = competitors.length;
+
+    // Analyze how spread out the competitors are
+    let onlyThisWeek = 0;
+    let haveEarlierWeeks = 0;
+    let haveLaterWeeks = 0;
+    let totalOptions = 0;
+
+    for (const comp of competitors) {
+      const compWeeks = [...new Set(comp.preferences.map((p) => p.week))];
+      totalOptions += comp.preferences.length;
+
+      if (compWeeks.length === 1 && compWeeks[0] === pref.week) {
+        onlyThisWeek++;
+      }
+      if (compWeeks.some((w) => w < pref.week)) {
+        haveEarlierWeeks++;
+      }
+      if (compWeeks.some((w) => w > pref.week)) {
+        haveLaterWeeks++;
+      }
+    }
 
     const totalCabins = INVENTORY_PER_WEEK[pref.size];
-    const expectedCancellations = Math.round(totalCabins * combinedRate * 10) / 10; // 1 decimal
+    const cancelRate = reservationCancelRate(pref.week);
+    const expectedCancellations = Math.round(totalCabins * cancelRate * 10) / 10;
     const netOpenings = Math.round((expectedCancellations - familiesAhead) * 10) / 10;
 
     return {
@@ -296,6 +356,13 @@ export function computeWeekBreakdown(
       familiesAhead,
       effectiveRank: familiesAhead + 1,
       netOpenings,
+      spread: {
+        total: familiesAhead,
+        onlyThisWeek,
+        haveEarlierWeeks,
+        haveLaterWeeks,
+        avgOptions: familiesAhead > 0 ? Math.round((totalOptions / familiesAhead) * 10) / 10 : 0,
+      },
     };
   });
 }
@@ -307,7 +374,7 @@ export interface CabinDemand {
   totalFamilies: number;
   totalCabins: number;
   expectedCancellations: number;
-  ratio: number; // families wanting this / expected cancellations
+  ratio: number;
 }
 
 export function computeCabinDemand(waitlist: Family[]): CabinDemand[] {
@@ -321,12 +388,15 @@ export function computeCabinDemand(waitlist: Family[]): CabinDemand[] {
     }
   }
 
-  const combinedRate = RESERVATION_CANCEL_RATE;
-
   return (['4c', '6c', '3c', '2c'] as CabinSize[]).map((size) => {
     const totalFamilies = counts[size].size;
     const totalCabins = INVENTORY_PER_WEEK[size] * TOTAL_WEEKS;
-    const expectedCancellations = Math.round(totalCabins * combinedRate * 10) / 10;
+    // Sum expected cancellations across all weeks (rate varies per week)
+    let expectedCancellations = 0;
+    for (let w = 1; w <= TOTAL_WEEKS; w++) {
+      expectedCancellations += INVENTORY_PER_WEEK[size] * reservationCancelRate(w);
+    }
+    expectedCancellations = Math.round(expectedCancellations * 10) / 10;
     return {
       size,
       totalFamilies,
@@ -355,8 +425,6 @@ export function computeWeekDemand(
   weeks: number[],
   waitlist: Family[],
 ): WeekDemand[] {
-  const combinedRate = RESERVATION_CANCEL_RATE;
-
   return weeks.map((week) => {
     const familiesThisWeek = new Set<number>();
     const counts: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
@@ -370,13 +438,23 @@ export function computeWeekDemand(
       }
     }
 
+    const cancelRate = reservationCancelRate(week);
     const cabinDemand: WeekCabinDemand[] = (['4c', '6c', '3c', '2c'] as CabinSize[]).map((size) => {
       const cabins = INVENTORY_PER_WEEK[size];
       const families = counts[size];
-      const expectedCancellations = Math.round(cabins * combinedRate * 10) / 10;
+      const expectedCancellations = Math.round(cabins * cancelRate * 10) / 10;
       return { size, families, cabins, expectedCancellations, ratio: expectedCancellations > 0 ? families / expectedCancellations : 0 };
     });
 
     return { week, cabinDemand, totalFamilies: familiesThisWeek.size };
   });
+}
+
+// Re-export for convenience
+export function buildFullInventory() {
+  const inventory: Record<number, Record<CabinSize, number>> = {};
+  for (let week = 1; week <= TOTAL_WEEKS; week++) {
+    inventory[week] = { ...INVENTORY_PER_WEEK };
+  }
+  return inventory;
 }
