@@ -351,11 +351,50 @@ export default function MatherTracker() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto font-sans">
-      {/* Header */}
+      {/* Hero */}
+      <div className="mb-6 text-center">
+        <p className="text-4xl">🌲🏕️🌲</p>
+        <h1 className="text-3xl font-bold text-blue-800 mt-2">Magic Mather 2026</h1>
+        <p className="text-gray-600 mt-1">🎯 Waitlist Probability Engine</p>
+      </div>
+
+      {/* Hero photos */}
+      <div className="mb-4 grid grid-cols-2 gap-3">
+        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-green-900/10">
+          <img
+            src="/kevin-cabin.png"
+            alt="Cabin at Camp Mather"
+            className="w-full h-full object-cover"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
+        </div>
+        <div className="aspect-[4/3] rounded-xl overflow-hidden bg-blue-900/10">
+          <img
+            src="/falls.jpg"
+            alt="Waterfall near Camp Mather"
+            className="w-full h-full object-cover"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
+        </div>
+      </div>
+
+      <div className="mb-8 px-5 py-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-900 leading-relaxed text-center">
+        <p className="font-semibold text-base mb-1">
+          🏔️ Camp Mather — SF's Best Kept Family Secret! 🌊
+        </p>
+        <p>
+          Nestled near Yosemite since 1924, Camp Mather is San Francisco's own slice of paradise 🌲
+          Swimming, hiking, campfires, stargazing, and zero cell service 📵 — just pure family time.
+          If you know, you know. From a super fan who's been dreaming about it since last August 🤩
+        </p>
+        <p className="mt-2 text-xs text-amber-700">
+          🦌 This tool helps you figure out your odds of getting off the waitlist.
+          Punch in your number and see the magic ✨
+        </p>
+      </div>
+
       <header className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-blue-800">🏕️ Magic Mather 2026</h1>
-        <p className="text-gray-600">🎯 Waitlist Probability Engine</p>
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-gray-400">
           🔄 Data refreshed {new Date(__BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at {new Date(__BUILD_TIME__).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
         </p>
       </header>
@@ -540,8 +579,19 @@ export default function MatherTracker() {
         </div>
       </div>
 
+      {/* Bottom photo banner */}
+      <div className="mt-10 -mx-6 relative h-48 overflow-hidden">
+        <img
+          src="/falls.jpg"
+          alt="Camp Mather waterfall"
+          className="w-full h-full object-cover"
+          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-transparent" />
+      </div>
+
       {/* Footer */}
-      <footer className="mt-12 pt-6 border-t border-gray-200 text-center text-sm text-gray-500 space-y-1">
+      <footer className="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-500 space-y-1">
         <p>Like this? Have questions? Drop me a line:</p>
         <button
           type="button"
