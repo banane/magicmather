@@ -5,8 +5,10 @@ type Inventory = Record<number, Record<CabinSize, number>>;
 // --- Simulation config ---
 
 const MONTE_CARLO_RUNS = 2000;
-const FLAKE_RATE = 0.10;        // 10% of families decline or let the window lapse
-const TIMEOUT_RATE = 0.05;      // 5% additional families time out the 24h decision window
+// Everyone on the waitlist has paid a $200 deposit, so commitment is higher
+// than a free signup. Rates reflect paid-deposit behavior.
+const FLAKE_RATE = 0.05;        // 5% actively decline (schedule conflict, changed plans)
+const TIMEOUT_RATE = 0.08;      // 8% let the 24h decision window lapse (missed email, on vacation)
 
 export { FLAKE_RATE, TIMEOUT_RATE, MONTE_CARLO_RUNS };
 
@@ -27,6 +29,9 @@ export interface MonteCarloSummary {
   assignedWeekCounts: Record<number, number>; // week -> times assigned
   mostLikelyWeek?: number;
   mostLikelySize?: CabinSize;
+  avgAbsorbedElsewhere: number;   // avg families ahead absorbed by other weeks per run
+  avgDropouts: number;            // avg families ahead who flaked/timed out per run
+  weekIndependentProbability: Record<number, number>; // week -> probability if ONLY that week existed
 }
 
 // --- Inventory ---
@@ -74,21 +79,47 @@ function createRng(seed: number) {
   };
 }
 
+// Jitter range: families can shift +/- this many positions in each run.
+// Models real-world variation in response timing and admin processing order.
+const RANK_JITTER = 15;
+
+// Dropout rate varies per family per run: base rate +/- this spread.
+// Models that some families are flakier than others.
+const DROPOUT_SPREAD = 0.12;
+
 function simulateOnce(
   waitlist: Family[],
-  dropRate: number,
+  baseDropRate: number,
   rng: () => number,
+  protectedRank?: number,
 ): Map<number, { week: number; size: CabinSize }> {
   const state = buildInventory();
   const assignments = new Map<number, { week: number; size: CabinSize }>();
 
-  for (const family of waitlist) {
-    // Each family has a chance to drop out (flake + timeout)
-    if (rng() < dropRate) continue;
+  // Jitter the processing order slightly each run
+  const jittered = waitlist.map((f) => ({
+    family: f,
+    sortKey: f.rank === protectedRank
+      ? f.rank // protected family keeps exact position
+      : f.rank + (rng() * 2 - 1) * RANK_JITTER,
+  }));
+  jittered.sort((a, b) => a.sortKey - b.sortKey);
 
+  for (const { family } of jittered) {
     for (const choice of family.preferences) {
       const weekState = state[choice.week];
       if (weekState && weekState[choice.size] > 0) {
+        // Slot is available — family gets offered this cabin.
+        // Protected family (the user) always accepts.
+        // Other families: per-family dropout rate varies around the base.
+        if (family.rank !== protectedRank) {
+          const familyDropRate = Math.max(0, Math.min(1,
+            baseDropRate + (rng() * 2 - 1) * DROPOUT_SPREAD,
+          ));
+          if (rng() < familyDropRate) {
+            break;
+          }
+        }
         weekState[choice.size]--;
         assignments.set(family.rank, { week: choice.week, size: choice.size });
         break;
@@ -112,8 +143,24 @@ export function monteCarloForFamily(
   const sizeCounts: Record<string, number> = {};
   const rng = createRng(rank * 7919 + 42);
 
+  // Identify which week+size combos this family wants
+  const myFamily = waitlist.find((f) => f.rank === rank);
+  const myPrefs = myFamily?.preferences ?? [];
+  const myWeekSizes = new Set(myPrefs.map((p) => `${p.week}:${p.size}`));
+
+  // Find families ahead who compete for any of my week+size combos
+  const competitors = waitlist.filter(
+    (f) =>
+      f.rank < rank &&
+      f.preferences.some((p) => myWeekSizes.has(`${p.week}:${p.size}`)),
+  );
+  const competitorRanks = new Set(competitors.map((f) => f.rank));
+
+  let totalAbsorbed = 0;
+  let totalDropouts = 0;
+
   for (let i = 0; i < runs; i++) {
-    const assignments = simulateOnce(waitlist, dropRate, rng);
+    const assignments = simulateOnce(waitlist, dropRate, rng, rank);
     const result = assignments.get(rank);
 
     if (result) {
@@ -121,6 +168,22 @@ export function monteCarloForFamily(
       weekCounts[result.week] = (weekCounts[result.week] || 0) + 1;
       sizeCounts[result.size] = (sizeCounts[result.size] || 0) + 1;
     }
+
+    // Count competitors who got absorbed by a DIFFERENT week than mine
+    let absorbed = 0;
+    let dropped = 0;
+    for (const compRank of competitorRanks) {
+      const compAssignment = assignments.get(compRank);
+      if (!compAssignment) {
+        // Not assigned at all = dropped out
+        dropped++;
+      } else if (!myWeekSizes.has(`${compAssignment.week}:${compAssignment.size}`)) {
+        // Assigned to a week+size that doesn't compete with me
+        absorbed++;
+      }
+    }
+    totalAbsorbed += absorbed;
+    totalDropouts += dropped;
   }
 
   const probability = Math.round((successes / runs) * 100);
@@ -144,6 +207,27 @@ export function monteCarloForFamily(
     }
   }
 
+  // Per-week independent probability: "if I only had this week, what are my odds?"
+  const weekIndependentProbability: Record<number, number> = {};
+  const uniqueWeeks = [...new Set(myPrefs.map((p) => p.week))];
+  const indyRuns = Math.min(runs, 500); // fewer runs per week to keep it fast
+
+  for (const targetWeek of uniqueWeeks) {
+    const weekOnlyPrefs = myPrefs.filter((p) => p.week === targetWeek);
+    const hypotheticalFamily: Family = { rank, preferences: weekOnlyPrefs };
+    const hypotheticalWaitlist = waitlist.map((f) =>
+      f.rank === rank ? hypotheticalFamily : f,
+    );
+
+    const indyRng = createRng(rank * 7919 + targetWeek * 31 + 99);
+    let indySuccesses = 0;
+    for (let i = 0; i < indyRuns; i++) {
+      const assignments = simulateOnce(hypotheticalWaitlist, dropRate, indyRng, rank);
+      if (assignments.has(rank)) indySuccesses++;
+    }
+    weekIndependentProbability[targetWeek] = Math.round((indySuccesses / indyRuns) * 100);
+  }
+
   return {
     runs,
     flakeRate,
@@ -152,6 +236,9 @@ export function monteCarloForFamily(
     assignedWeekCounts: weekCounts,
     mostLikelyWeek,
     mostLikelySize,
+    avgAbsorbedElsewhere: Math.round(totalAbsorbed / runs),
+    avgDropouts: Math.round(totalDropouts / runs),
+    weekIndependentProbability,
   };
 }
 

@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/mathertracker.tsx","./src/main.tsx","./constants.ts","./mather-engine.ts"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/mathertracker.tsx","./src/env.d.ts","./src/main.tsx","./src/test-setup.ts","./constants.ts","./mather-engine.ts","./mather-engine.test.ts"],"version":"5.9.3"}

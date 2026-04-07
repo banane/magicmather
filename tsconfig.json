@@ -15,5 +15,5 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["src", "constants.ts", "mather-engine.ts"]
+  "include": ["src", "constants.ts", "mather-engine.ts", "mather-engine.test.ts"]
 }
