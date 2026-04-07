@@ -1,0 +1,26 @@
+name: Update Waitlist Data
+on:
+  schedule:
+    - cron: '0 15 * * *' # Runs daily at 8AM PT (15:00 UTC)
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install pdfplumber
+      - name: Run Scraper
+        run: python scripts/parse_pdf.py
+      - name: Commit and Push
+        run: |
+          git config --global user.name "banane"
+          git config --global user.email "banane@gmail.com"
+          git add data.json
+          git commit -m "Update waitlist data" || exit 0
+          git push
