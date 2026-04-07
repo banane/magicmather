@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   simulate,
   computeWeekBreakdown,
@@ -10,6 +10,7 @@ import {
   WAITLIST_LAPSE_RATE,
   WAITLIST_FLAKE_BASE,
   WAITLIST_FLAKE_LATE,
+  MONTE_CARLO_RUNS,
   type SimulationResult,
   type WeekBreakdown,
   type MonteCarloSummary,
@@ -313,13 +314,27 @@ function updateUrl(rank: number | '') {
   window.history.replaceState({}, '', url.toString());
 }
 
+// Debounce hook: returns a value that only updates after `delay` ms of no changes
+function useDebounce<T>(value: T, delay: number): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const timer = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+  return debounced;
+}
+
 export default function MatherTracker() {
   const [userRank, setUserRank] = useState<number | ''>(getRankFromUrl);
+  const debouncedRank = useDebounce(userRank, 400);
+  const isComputing = userRank !== debouncedRank;
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+
+  // Heavy computations only run on debounced rank
   const results = useMemo(() => simulate(waitlistData as Family[]), []);
-  const myStatus = results.find((f) => f.rank === userRank);
-  const weekBreakdown = useMemo(() => userRank ? computeWeekBreakdown(userRank, waitlistData as Family[]) : [], [userRank]);
-  const monteCarlo = useMemo(() => userRank ? monteCarloForFamily(userRank, waitlistData as Family[]) : null, [userRank]);
+  const myStatus = results.find((f) => f.rank === debouncedRank);
+  const weekBreakdown = useMemo(() => debouncedRank ? computeWeekBreakdown(debouncedRank, waitlistData as Family[]) : [], [debouncedRank]);
+  const monteCarlo = useMemo(() => debouncedRank ? monteCarloForFamily(debouncedRank, waitlistData as Family[]) : null, [debouncedRank]);
   const myWeeks = useMemo(() => weekBreakdown.length ? [...new Set(weekBreakdown.map((b) => b.week))].sort((a, b) => a - b) : [], [weekBreakdown]);
   const myWeekDemand = useMemo(() => computeWeekDemand(myWeeks, waitlistData as Family[]), [myWeeks]);
   const cabinDemand = useMemo(() => computeCabinDemand(waitlistData as Family[]), []);
@@ -366,9 +381,12 @@ export default function MatherTracker() {
           <input type="number" className="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-lg font-mono"
             placeholder="e.g. 832" value={userRank}
             onChange={(e) => { const rank = e.target.value === '' ? '' : parseInt(e.target.value, 10); setUserRank(rank); updateUrl(rank); }} />
+          {isComputing && userRank !== '' && (
+            <p className="mt-2 text-xs text-stone-400 animate-pulse">🎲 Crunching {MONTE_CARLO_RUNS.toLocaleString()} simulations...</p>
+          )}
         </Card>
 
-        {myStatus && monteCarlo && (
+        {myStatus && monteCarlo && !isComputing && (
           <>
             {/* Probability */}
             {(() => { const s = pctStyle(monteCarlo.probability); return (
