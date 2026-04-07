@@ -6,12 +6,24 @@ type Inventory = Record<number, Record<CabinSize, number>>;
 
 const MONTE_CARLO_RUNS = 2000;
 
-// These rates apply to EXISTING reservation holders (not waitlisted families).
-// All cabins are full. These are the odds that a current holder cancels.
-const CANCEL_RATE = 0.05;        // 5% of current holders cancel (plans change, job moves)
-const LAPSE_RATE = 0.08;         // 8% lapse when contacted about week swaps / changes
+// Rate for EXISTING reservation holders giving up their cabin
+const RESERVATION_CANCEL_RATE = 0.20;  // 20% of current holders give up their reservation
 
-export { CANCEL_RATE, LAPSE_RATE, MONTE_CARLO_RUNS };
+// Rates for WAITLISTED families when offered a spot
+const WAITLIST_LAPSE_RATE = 0.15;      // 15% won't answer the email in time
+
+// Flake rate scales up as the week approaches — by late summer, many waitlisted
+// families have made other plans since they've been waiting months.
+const WAITLIST_FLAKE_BASE = 0.05;      // Early summer: 5% made other plans
+const WAITLIST_FLAKE_LATE = 0.25;      // Late summer: 25% made other plans
+
+// Linear interpolation: week 1 = base, week 11 = late
+function waitlistFlakeRate(week: number): number {
+  const t = Math.max(0, Math.min(1, (week - 1) / (TOTAL_WEEKS - 1)));
+  return WAITLIST_FLAKE_BASE + t * (WAITLIST_FLAKE_LATE - WAITLIST_FLAKE_BASE);
+}
+
+export { RESERVATION_CANCEL_RATE, WAITLIST_LAPSE_RATE, WAITLIST_FLAKE_BASE, WAITLIST_FLAKE_LATE, waitlistFlakeRate, MONTE_CARLO_RUNS };
 
 // --- Types ---
 
@@ -24,13 +36,15 @@ export interface SimulationResult extends Family {
 
 export interface MonteCarloSummary {
   runs: number;
-  cancelRate: number;
-  lapseRate: number;
+  reservationCancelRate: number;
+  waitlistLapseRate: number;
+  waitlistFlakeBase: number;
+  waitlistFlakeLate: number;
   probability: number;
   assignedWeekCounts: Record<number, number>;
   mostLikelyWeek?: number;
   mostLikelySize?: CabinSize;
-  avgCancellations: number;       // avg total cancellations across all weeks per run
+  avgCancellations: number;       // avg reservation cancellations per run
   avgAbsorbedElsewhere: number;
   weekIndependentProbability: Record<number, number>;
 }
@@ -63,15 +77,17 @@ function createRng(seed: number) {
 
 const RANK_JITTER = 15;
 
+// Waitlist dropout is per-week: lapse (fixed) + flake (scales with season)
+
 function simulateOnce(
   waitlist: Family[],
-  cancelRate: number,
+  reservationRate: number,
   rng: () => number,
   protectedRank?: number,
 ): { assignments: Map<number, { week: number; size: CabinSize }>; totalCancellations: number } {
   const fullInventory = buildFullInventory();
 
-  // Step 1: Roll cancellations for each occupied cabin
+  // Step 1: Roll cancellations — each reservation holder may give up their cabin
   const openings: Inventory = {};
   let totalCancellations = 0;
   for (let week = 1; week <= TOTAL_WEEKS; week++) {
@@ -79,7 +95,7 @@ function simulateOnce(
     for (const size of ['2c', '3c', '4c', '6c'] as CabinSize[]) {
       const totalCabins = fullInventory[week][size];
       for (let c = 0; c < totalCabins; c++) {
-        if (rng() < cancelRate) {
+        if (rng() < reservationRate) {
           openings[week][size]++;
           totalCancellations++;
         }
@@ -101,11 +117,12 @@ function simulateOnce(
   for (const { family } of jittered) {
     for (const choice of family.preferences) {
       if (openings[choice.week]?.[choice.size] > 0) {
-        // Opening available — waitlisted family gets offered this cabin.
+        // Opening available — waitlisted family gets emailed an offer.
         // Protected family (the user) always accepts.
-        // Other waitlisted families may also decline their offer.
-        if (family.rank !== protectedRank && rng() < 0.05) {
-          break; // Small chance a waitlisted person declines their turn
+        // Other waitlisted families: may lapse (fixed) or flake (higher for later weeks).
+        const weekDropout = WAITLIST_LAPSE_RATE + waitlistFlakeRate(choice.week);
+        if (family.rank !== protectedRank && rng() < weekDropout) {
+          break; // Didn't respond or declined — opening goes to next person
         }
         openings[choice.week][choice.size]--;
         assignments.set(family.rank, { week: choice.week, size: choice.size });
@@ -121,7 +138,7 @@ function simulateOnce(
 
 export function simulate(waitlist: Family[]): SimulationResult[] {
   // In the deterministic view, we estimate expected cancellations as the "openings"
-  const expectedRate = CANCEL_RATE + LAPSE_RATE;
+  const expectedRate = RESERVATION_CANCEL_RATE;
   const openings: Inventory = {};
   for (let week = 1; week <= TOTAL_WEEKS; week++) {
     openings[week] = {} as Record<CabinSize, number>;
@@ -152,10 +169,8 @@ export function monteCarloForFamily(
   rank: number,
   waitlist: Family[],
   runs = MONTE_CARLO_RUNS,
-  cancelRate = CANCEL_RATE,
-  lapseRate = LAPSE_RATE,
+  reservationRate = RESERVATION_CANCEL_RATE,
 ): MonteCarloSummary {
-  const combinedRate = cancelRate + lapseRate;
   let successes = 0;
   const weekCounts: Record<number, number> = {};
   const sizeCounts: Record<string, number> = {};
@@ -174,7 +189,7 @@ export function monteCarloForFamily(
   let totalCancellationsSum = 0;
 
   for (let i = 0; i < runs; i++) {
-    const { assignments, totalCancellations } = simulateOnce(waitlist, combinedRate, rng, rank);
+    const { assignments, totalCancellations } = simulateOnce(waitlist, reservationRate, rng, rank);
     totalCancellationsSum += totalCancellations;
     const result = assignments.get(rank);
 
@@ -221,7 +236,7 @@ export function monteCarloForFamily(
     const indyRng = createRng(rank * 7919 + targetWeek * 31 + 99);
     let indySuccesses = 0;
     for (let i = 0; i < indyRuns; i++) {
-      const { assignments } = simulateOnce(hypotheticalWaitlist, combinedRate, indyRng, rank);
+      const { assignments } = simulateOnce(hypotheticalWaitlist, reservationRate, indyRng, rank);
       if (assignments.has(rank)) indySuccesses++;
     }
     weekIndependentProbability[targetWeek] = Math.round((indySuccesses / indyRuns) * 100);
@@ -229,8 +244,10 @@ export function monteCarloForFamily(
 
   return {
     runs,
-    cancelRate,
-    lapseRate,
+    reservationCancelRate: reservationRate,
+    waitlistLapseRate: WAITLIST_LAPSE_RATE,
+    waitlistFlakeBase: WAITLIST_FLAKE_BASE,
+    waitlistFlakeLate: WAITLIST_FLAKE_LATE,
     probability,
     assignedWeekCounts: weekCounts,
     mostLikelyWeek,
@@ -260,7 +277,7 @@ export function computeWeekBreakdown(
   const family = waitlist.find((f) => f.rank === rank);
   if (!family) return [];
 
-  const combinedRate = CANCEL_RATE + LAPSE_RATE;
+  const combinedRate = RESERVATION_CANCEL_RATE;
 
   return family.preferences.map((pref) => {
     const familiesAhead = waitlist.filter(
@@ -304,7 +321,7 @@ export function computeCabinDemand(waitlist: Family[]): CabinDemand[] {
     }
   }
 
-  const combinedRate = CANCEL_RATE + LAPSE_RATE;
+  const combinedRate = RESERVATION_CANCEL_RATE;
 
   return (['4c', '6c', '3c', '2c'] as CabinSize[]).map((size) => {
     const totalFamilies = counts[size].size;
@@ -338,7 +355,7 @@ export function computeWeekDemand(
   weeks: number[],
   waitlist: Family[],
 ): WeekDemand[] {
-  const combinedRate = CANCEL_RATE + LAPSE_RATE;
+  const combinedRate = RESERVATION_CANCEL_RATE;
 
   return weeks.map((week) => {
     const familiesThisWeek = new Set<number>();

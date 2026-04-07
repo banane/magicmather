@@ -5,8 +5,11 @@ import {
   computeCabinDemand,
   computeWeekDemand,
   monteCarloForFamily,
-  CANCEL_RATE,
-  LAPSE_RATE,
+  RESERVATION_CANCEL_RATE,
+  WAITLIST_LAPSE_RATE,
+  WAITLIST_FLAKE_BASE,
+  WAITLIST_FLAKE_LATE,
+  waitlistFlakeRate,
   type SimulationResult,
   type WeekBreakdown,
   type MonteCarloSummary,
@@ -199,7 +202,8 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
         competingFamilies.add(f.rank);
     }
   }
-  const combinedRate = CANCEL_RATE + LAPSE_RATE;
+  const earlyDropout = WAITLIST_LAPSE_RATE + WAITLIST_FLAKE_BASE;
+  const lateDropout = WAITLIST_LAPSE_RATE + WAITLIST_FLAKE_LATE;
 
   return (
     <Card>
@@ -210,8 +214,9 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
       {isOpen && (
         <div className="px-4 pb-4 text-xs text-stone-600 leading-relaxed space-y-2 border-t border-stone-100 pt-3">
           <p>🎰 <strong>What's a Monte Carlo simulation?</strong> Instead of one fixed prediction, we run the waitlist process {mc.runs.toLocaleString()} times, each with random variation — different families cancel, processing order shifts slightly. Your probability is the percentage of runs where you got a cabin. More runs = more accurate odds.</p>
-          <p>🏕️ <strong>All cabins are full.</strong> Every family ahead of you already has a confirmed reservation and paid a <strong>$200 deposit</strong>. The only way you get a cabin is if someone cancels. Plans do change: job moves, family conflicts, schedule shifts 🏔️ We estimate {Math.round(CANCEL_RATE * 100)}% actively cancel + {Math.round(LAPSE_RATE * 100)}% lapse when Rec & Park contacts them ({Math.round(combinedRate * 100)}% combined cancel rate per cabin).</p>
-          <p>🎲 Each run: we roll the dice on every occupied cabin — does the holder cancel? That creates <strong>~{mc.avgCancellations} openings</strong> across all weeks. Then waitlisted families fill those openings in rank order.</p>
+          <p>🏕️ <strong>All cabins are full.</strong> Every reservation holder paid a <strong>$200 deposit</strong>. But plans change — job moves, family conflicts, schedule shifts 🏔️ We estimate <strong>{Math.round(RESERVATION_CANCEL_RATE * 100)}%</strong> of current holders give up their reservation.</p>
+          <p>🎲 Each run: we roll the dice on every occupied cabin — does the holder cancel? That creates <strong>~{mc.avgCancellations} openings</strong> across all weeks. Then waitlisted families get emailed offers in rank order.</p>
+          <p>📧 Not every waitlisted family takes their offer either: <strong>{Math.round(WAITLIST_LAPSE_RATE * 100)}%</strong> don't answer the email in time + <strong>{Math.round(WAITLIST_FLAKE_BASE * 100)}–{Math.round(WAITLIST_FLAKE_LATE * 100)}%</strong> made other plans (higher for later weeks — families have been waiting longer). That's {Math.round(earlyDropout * 100)}% dropout for early summer, up to {Math.round(lateDropout * 100)}% by late August. Each pass bumps the next person in line. You always accept 🤞</p>
           <p>👨‍👩‍👧‍👦 <strong>{competingFamilies.size} waitlisted families</strong> ahead of you want the same weeks/cabins. Avg <strong>{avgOptions.toFixed(1)} options</strong> each — when any of their choices opens up, they take it and leave your pool 🏕️</p>
           <p>🔄 Per run, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> competitors get absorbed by other weeks they also wanted 🌊 — leaving fewer people competing for your specific weeks.</p>
           <p className="pt-1 border-t border-stone-100">📄 <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a></p>

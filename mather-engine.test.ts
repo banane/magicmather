@@ -7,8 +7,11 @@ import {
   computeWeekBreakdown,
   computeCabinDemand,
   computeWeekDemand,
-  CANCEL_RATE,
-  LAPSE_RATE,
+  RESERVATION_CANCEL_RATE,
+  WAITLIST_LAPSE_RATE,
+  WAITLIST_FLAKE_BASE,
+  WAITLIST_FLAKE_LATE,
+  waitlistFlakeRate,
 } from './mather-engine';
 
 // --- Test fixtures ---
@@ -106,27 +109,39 @@ describe('monteCarloForFamily', () => {
       family(2, [{ week: 3, size: '4c' }]),
       family(3, [{ week: 3, size: '4c' }]),
     ];
-    const low = monteCarloForFamily(3, waitlist, 500, 0.01, 0.01);
-    const high = monteCarloForFamily(3, waitlist, 500, 0.20, 0.20);
+    const low = monteCarloForFamily(3, waitlist, 500, 0.02);
+    const high = monteCarloForFamily(3, waitlist, 500, 0.40);
     expect(high.probability).toBeGreaterThanOrEqual(low.probability);
   });
 
   it('tracks average cancellations per run', () => {
     const mc = monteCarloForFamily(1, SMALL_WAITLIST, 500);
-    // With ~13% cancel rate across 748 total cabins, expect ~97 cancellations
-    expect(mc.avgCancellations).toBeGreaterThan(50);
-    expect(mc.avgCancellations).toBeLessThan(150);
+    // With 20% cancel rate across 748 total cabins, expect ~150 cancellations
+    expect(mc.avgCancellations).toBeGreaterThan(100);
+    expect(mc.avgCancellations).toBeLessThan(200);
   });
 
-  it('reports correct cancelRate and lapseRate', () => {
+  it('reports correct rates', () => {
     const mc = monteCarloForFamily(3, SMALL_WAITLIST, 100);
-    expect(mc.cancelRate).toBe(CANCEL_RATE);
-    expect(mc.lapseRate).toBe(LAPSE_RATE);
+    expect(mc.reservationCancelRate).toBe(RESERVATION_CANCEL_RATE);
+    expect(mc.waitlistLapseRate).toBe(WAITLIST_LAPSE_RATE);
+    expect(mc.waitlistFlakeBase).toBe(WAITLIST_FLAKE_BASE);
+    expect(mc.waitlistFlakeLate).toBe(WAITLIST_FLAKE_LATE);
     expect(mc.runs).toBe(100);
   });
 
+  it('waitlist flake rate scales with week number', () => {
+    const week1 = waitlistFlakeRate(1);
+    const week6 = waitlistFlakeRate(6);
+    const week11 = waitlistFlakeRate(11);
+    expect(week1).toBeCloseTo(WAITLIST_FLAKE_BASE, 2);
+    expect(week11).toBeCloseTo(WAITLIST_FLAKE_LATE, 2);
+    expect(week6).toBeGreaterThan(week1);
+    expect(week6).toBeLessThan(week11);
+  });
+
   it('returns 0 probability for a rank not in the waitlist', () => {
-    const mc = monteCarloForFamily(999, SMALL_WAITLIST, 500, 0, 0);
+    const mc = monteCarloForFamily(999, SMALL_WAITLIST, 500, 0);
     expect(mc.probability).toBe(0);
   });
 
