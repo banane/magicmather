@@ -261,7 +261,7 @@ function MethodologySection({ mc, breakdown, waitlist, status, forceOpen }: {
           <p>📧 <strong>Waitlist offers:</strong> When an opening comes up, the next family in line gets a 24h email. <strong>{Math.round(WAITLIST_LAPSE_RATE * 100)}%</strong> miss the email + <strong>{Math.round(WAITLIST_FLAKE_BASE * 100)}–{Math.round(WAITLIST_FLAKE_LATE * 100)}%</strong> made other plans (more for later weeks — they've been waiting longer). Accept or decline, they're off the list. The offer cascades to the next person. You always accept 🤞</p>
           <p>👨‍👩‍👧‍👦 <strong>{competingFamilies.size} families</strong> ahead overlap your weeks/cabins. But <strong>~{mc.avgRemovedBeforeYourWeeks}</strong> get resolved in earlier weeks before yours even come up — accepted other weeks, declined offers, or let the window lapse.</p>
           <p>🔄 Of remaining competitors, <strong className="text-blue-700">{mc.avgAbsorbedElsewhere}</strong> get absorbed by other weeks they also wanted 🌊 — each one who takes a different week frees up yours.</p>
-          <p className="pt-1 border-t border-stone-100">📄 <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a></p>
+          <p className="pt-1 border-t border-stone-100">📄 <a href="https://sfrecpark.org/DocumentCenter/View/29016/Camp-Mather-Waitlist-as-of-51326?bidId=" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Official SF Rec & Park Waitlist PDF</a></p>
         </div>
       )}
     </Card>
@@ -366,7 +366,7 @@ export default function MatherTracker() {
           <p className="text-sm text-amber-700 mt-2">🦌 Punch in your waitlist number to see your odds ✨</p>
           <p className="text-sm text-stone-600 mt-2">
             😊 Unofficial fan project — not affiliated with SF Rec & Park.
-            Estimates based on <a href="https://sfrecpark.org/DocumentCenter/View/28472/Camp-Mather-WaitListCrosstab2026" target="_blank" rel="noopener noreferrer" className="underline">public waitlist data</a> and{' '}
+            Estimates based on <a href="https://sfrecpark.org/DocumentCenter/View/29016/Camp-Mather-Waitlist-as-of-51326?bidId=" target="_blank" rel="noopener noreferrer" className="underline">public waitlist data</a> and{' '}
             <button type="button" className="underline hover:text-stone-800" onClick={() => { setMethodologyOpen(true); document.getElementById('methodology')?.scrollIntoView({ behavior: 'smooth' }); }}>statistical modeling</button>.
           </p>
           </div>
