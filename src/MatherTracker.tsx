@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import {
   simulate,
   computeWeekBreakdown,
@@ -10,18 +10,27 @@ import {
   WAITLIST_LAPSE_RATE,
   WAITLIST_FLAKE_BASE,
   WAITLIST_FLAKE_LATE,
-  MONTE_CARLO_RUNS,
   type SimulationResult,
   type WeekBreakdown,
   type MonteCarloSummary,
   type WeekDemand,
 } from '../mather-engine';
-import { type CabinSize, type Family, INVENTORY_PER_WEEK } from '../constants';
+import { type CabinSize, type Family, INVENTORY_PER_WEEK, TOTAL_WEEKS } from '../constants';
 import rawData from '../public/data.json';
+import rawOpenings from '../public/openings.json';
 
 // Support both old format (array) and new format ({ scrapedAt, families })
 const waitlistData: Family[] = Array.isArray(rawData) ? rawData : (rawData as { families: Family[] }).families;
 const scrapedAt: string | null = Array.isArray(rawData) ? null : (rawData as { scrapedAt: string }).scrapedAt;
+
+interface Opening { week: number; size: CabinSize; raw: string; dateRange: string }
+const openingsData: Opening[] = (rawOpenings as { openings: Opening[] }).openings;
+const openingsScrapedAt: string | null = (rawOpenings as { scrapedAt: string }).scrapedAt ?? null;
+
+// Count current openings per (week, size).
+function countOpenings(week: number, size: CabinSize): number {
+  return openingsData.filter((o) => o.week === week && o.size === size).length;
+}
 
 // --- Constants ---
 
@@ -40,6 +49,7 @@ const LATE_WEEKS = new Set([9, 10, 11]);
 const LESS_POPULAR_SIZES = new Set<CabinSize>(['2c', '3c']);
 const CABIN_NAMES: Record<string, string> = {
   '2c': '2-person', '3c': '3-person', '4c': '4-person', '6c': '6-person',
+  '6t': '6-person tent',
 };
 
 function weekLabel(w: number) { return WEEK_LABELS[w] ?? `Week ${w}`; }
@@ -171,7 +181,7 @@ function WeekCard({ week, breakdowns, demand, mcWeekPct, independentPct }: {
           <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">📊 Week demand</span>
           <span className="text-[11px] text-stone-400">🛖 {demand.cabinDemand.reduce((s, c) => s + c.cabins, 0)} cabins (all occupied)</span>
         </div>
-        <div className="mt-1.5 grid grid-cols-4 gap-1">
+        <div className="mt-1.5 grid grid-cols-5 gap-1">
           {demand.cabinDemand.map((c) => {
             const isMine = breakdowns.some((b) => b.size === c.size);
             return (
@@ -186,6 +196,17 @@ function WeekCard({ week, breakdowns, demand, mcWeekPct, independentPct }: {
             );
           })}
         </div>
+        {(() => {
+          const opens = (['2c','3c','4c','6c','6t'] as CabinSize[])
+            .map((s) => ({ size: s, n: countOpenings(week, s) }))
+            .filter((o) => o.n > 0);
+          if (opens.length === 0) return null;
+          return (
+            <p className="mt-2 text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-md px-2 py-1">
+              🎟️ Open now (first-come-first-served): {opens.map((o) => `${o.n} ${o.size}`).join(' · ')}
+            </p>
+          );
+        })()}
         <p className="mt-1.5 text-[11px] text-stone-400 italic">{seasonTip(week)}</p>
       </div>
     </Card>
@@ -314,32 +335,45 @@ function updateUrl(rank: number | '') {
   window.history.replaceState({}, '', url.toString());
 }
 
-// Debounce hook: returns a value that only updates after `delay` ms of no changes
-function useDebounce<T>(value: T, delay: number): T {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const timer = setTimeout(() => setDebounced(value), delay);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-  return debounced;
-}
-
 export default function MatherTracker() {
-  const [userRank, setUserRank] = useState<number | ''>(getRankFromUrl);
-  const debouncedRank = useDebounce(userRank, 400);
-  const isComputing = userRank !== debouncedRank;
+  const initialRank = getRankFromUrl();
+  const [userRank, setUserRank] = useState<number | ''>(initialRank);
+  const [submittedRank, setSubmittedRank] = useState<number | ''>(initialRank);
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [whatIfWeek, setWhatIfWeek] = useState<number>(1);
+  const [whatIfSize, setWhatIfSize] = useState<CabinSize>('4c');
+  const [submittedWhatIf, setSubmittedWhatIf] = useState<{ week: number; size: CabinSize } | null>(null);
 
-  // Heavy computations only run on debounced rank
+  const submitRank = () => {
+    setSubmittedRank(userRank);
+    updateUrl(userRank);
+  };
+  const submitWhatIf = () => {
+    setSubmittedWhatIf({ week: whatIfWeek, size: whatIfSize });
+  };
+
   const results = useMemo(() => simulate(waitlistData as Family[]), []);
-  const myStatus = results.find((f) => f.rank === debouncedRank);
-  const weekBreakdown = useMemo(() => debouncedRank ? computeWeekBreakdown(debouncedRank, waitlistData as Family[]) : [], [debouncedRank]);
-  const monteCarlo = useMemo(() => debouncedRank ? monteCarloForFamily(debouncedRank, waitlistData as Family[]) : null, [debouncedRank]);
+  const myStatus = results.find((f) => f.rank === submittedRank);
+  const weekBreakdown = useMemo(() => submittedRank ? computeWeekBreakdown(submittedRank, waitlistData as Family[]) : [], [submittedRank]);
+  const monteCarlo = useMemo(() => submittedRank ? monteCarloForFamily(submittedRank, waitlistData as Family[]) : null, [submittedRank]);
   const myWeeks = useMemo(() => weekBreakdown.length ? [...new Set(weekBreakdown.map((b) => b.week))].sort((a, b) => a - b) : [], [weekBreakdown]);
   const myWeekDemand = useMemo(() => computeWeekDemand(myWeeks, waitlistData as Family[]), [myWeeks]);
   const cabinDemand = useMemo(() => computeCabinDemand(waitlistData as Family[]), []);
   const factors = useMemo(() => buildFactors(weekBreakdown), [weekBreakdown]);
   const mySizes = [...new Set(weekBreakdown.map((b) => b.size))];
+
+  const whatIfMc = useMemo(() => {
+    if (!submittedRank || !submittedWhatIf) return null;
+    const hypothetical: Family = {
+      rank: submittedRank,
+      preferences: [{ week: submittedWhatIf.week, size: submittedWhatIf.size }],
+    };
+    const exists = waitlistData.some((f) => f.rank === submittedRank);
+    const modified = exists
+      ? waitlistData.map((f) => f.rank === submittedRank ? hypothetical : f)
+      : [...waitlistData, hypothetical];
+    return monteCarloForFamily(submittedRank, modified);
+  }, [submittedRank, submittedWhatIf]);
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -350,6 +384,9 @@ export default function MatherTracker() {
           <p className="text-3xl">🌲🏕️🌲</p>
           <h1 className="font-chalk text-3xl text-stone-800 mt-1">Magic Mather 2026</h1>
           <p className="text-stone-500 text-sm font-sans">🎯 Waitlist Probability Engine</p>
+          <p className="mt-2 inline-block text-xs font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">
+            🔄 Updated {new Date(scrapedAt ?? __BUILD_TIME__).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+          </p>
         </div>
 
         {/* About with flanking photos */}
@@ -376,17 +413,96 @@ export default function MatherTracker() {
         </div>
 
         {/* Input */}
-        <Card className="p-4">
-          <label className="block font-semibold text-sm text-stone-700 mb-2">🔍 Enter your Waitlist Number</label>
-          <input type="number" className="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-lg font-mono"
-            placeholder="e.g. 832" value={userRank}
-            onChange={(e) => { const rank = e.target.value === '' ? '' : parseInt(e.target.value, 10); setUserRank(rank); updateUrl(rank); }} />
-          {isComputing && userRank !== '' && (
-            <p className="mt-2 text-xs text-stone-400 animate-pulse">🎲 Crunching {MONTE_CARLO_RUNS.toLocaleString()} simulations...</p>
+        <Card className="p-4 space-y-4">
+          <div>
+            <label className="block font-semibold text-sm text-stone-700 mb-2">🔍 Enter your Waitlist Number</label>
+            <div className="flex gap-2">
+              <input type="number" className="flex-1 min-w-0 p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-lg font-mono"
+                placeholder="e.g. 832" value={userRank}
+                onChange={(e) => { const rank = e.target.value === '' ? '' : parseInt(e.target.value, 10); setUserRank(rank); }}
+                onKeyDown={(e) => { if (e.key === 'Enter') submitRank(); }} />
+              <button type="button" onClick={submitRank} disabled={userRank === ''}
+                className="px-5 py-3 rounded-lg bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed">
+                Submit
+              </button>
+            </div>
+          </div>
+
+          {submittedRank !== '' && (
+            <div className="pt-3 border-t border-stone-100">
+              <label className="block font-semibold text-sm text-stone-700 mb-2">🤔 Try a different cabin choice</label>
+              <div className="flex flex-wrap gap-2">
+                <select
+                  className="flex-1 min-w-[8rem] p-3 border border-stone-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                  value={whatIfWeek}
+                  onChange={(e) => setWhatIfWeek(parseInt(e.target.value, 10))}
+                  aria-label="Change week"
+                >
+                  {Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((w) => (
+                    <option key={w} value={w}>{weekLabel(w)}</option>
+                  ))}
+                </select>
+                <select
+                  className="flex-1 min-w-[8rem] p-3 border border-stone-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                  value={whatIfSize}
+                  onChange={(e) => setWhatIfSize(e.target.value as CabinSize)}
+                  aria-label="Change cabin type"
+                >
+                  {(['2c', '3c', '4c', '6c', '6t'] as CabinSize[]).map((s) => (
+                    <option key={s} value={s}>{CABIN_NAMES[s]}</option>
+                  ))}
+                </select>
+                <button type="button" onClick={submitWhatIf}
+                  className="px-5 py-3 rounded-lg bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700">
+                  Submit
+                </button>
+              </div>
+              {whatIfMc && monteCarlo && submittedWhatIf && (() => {
+                const isTent = submittedWhatIf.size === '6t';
+                const openCount = countOpenings(submittedWhatIf.week, submittedWhatIf.size);
+                const s = pctStyle(whatIfMc.probability);
+                const delta = whatIfMc.probability - monteCarlo.probability;
+                const deltaStr = delta > 0 ? `+${delta}` : `${delta}`;
+                const deltaCls = delta > 0 ? 'text-emerald-700' : delta < 0 ? 'text-red-600' : 'text-stone-500';
+                return (
+                  <div className={`mt-3 p-3 rounded-lg border ${isTent ? 'border-emerald-200 bg-emerald-50' : `${s.border} ${s.bg}`}`}>
+                    {isTent ? (
+                      <>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-3xl font-bold font-mono text-emerald-700">{openCount}</span>
+                          <span className="text-sm font-medium text-stone-700">tent site{openCount === 1 ? '' : 's'} open now</span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-1">
+                          ⛺ {CABIN_NAMES['6t']} · 📅 {weekLabel(submittedWhatIf.week)}
+                        </p>
+                        <p className="text-[11px] text-stone-500 mt-1">
+                          🎟️ First-come-first-served — not part of the waitlist. {openCount > 0 ? 'Email sfreconline@sfgov.org to grab one.' : 'None currently free for this week.'}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <div className="flex items-baseline gap-2">
+                          <span className={`text-3xl font-bold font-mono ${s.text}`}>{whatIfMc.probability}%</span>
+                          <span className={`text-sm font-medium ${deltaCls}`}>({deltaStr}pp vs your actual)</span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-1">
+                          🛖 {CABIN_NAMES[submittedWhatIf.size]} cabin · 📅 {weekLabel(submittedWhatIf.week)}
+                        </p>
+                        {openCount > 0 && (
+                          <p className="text-[11px] text-emerald-700 mt-1">
+                            🎟️ {openCount} also open right now (first-come-first-served — email sfreconline@sfgov.org)
+                          </p>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
           )}
         </Card>
 
-        {myStatus && monteCarlo && !isComputing && (
+        {myStatus && monteCarlo && (
           <>
             {/* Probability */}
             {(() => { const s = pctStyle(monteCarlo.probability); return (
@@ -450,23 +566,40 @@ export default function MatherTracker() {
         {/* Overall demand */}
         <div>
           <h2 className="font-bold text-base text-stone-800 mb-3">🏠 Overall Cabin Demand</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {cabinDemand.map((d) => (
-              <Card key={d.size} className="p-3">
-                <span className="block text-[11px] text-stone-400 uppercase tracking-wider">{d.size}</span>
-                <span className="block text-xl font-mono font-bold mt-0.5">{d.totalFamilies}</span>
-                <span className="block text-[11px] text-stone-400">families waitlisted</span>
-                <div className="mt-1.5 pt-1.5 border-t border-stone-100">
-                  <span className="block text-[11px] text-stone-400">{d.totalCabins} cabins (all full)</span>
-                  <span className="block text-[11px] text-stone-400">~{d.expectedCancellations} expected cancellations</span>
-                  <span className="block text-[11px] mt-0.5 font-medium">
-                    {d.totalFamilies > d.expectedCancellations
-                      ? <span className="text-red-600">{Math.round(d.totalFamilies / d.expectedCancellations)}x more waitlisted than expected openings</span>
-                      : <span className="text-emerald-600">More expected openings than waitlisted families</span>}
-                  </span>
-                </div>
-              </Card>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+            {cabinDemand.map((d) => {
+              const isTent = d.size === '6t';
+              const totalOpenNow = isTent
+                ? openingsData.filter((o) => o.size === '6t').length
+                : 0;
+              return (
+                <Card key={d.size} className="p-3">
+                  <span className="block text-[11px] text-stone-400 uppercase tracking-wider">{d.size}{isTent ? ' (tent)' : ''}</span>
+                  <span className="block text-xl font-mono font-bold mt-0.5">{d.totalFamilies}</span>
+                  <span className="block text-[11px] text-stone-400">families waitlisted</span>
+                  <div className="mt-1.5 pt-1.5 border-t border-stone-100">
+                    {isTent ? (
+                      <>
+                        <span className="block text-[11px] text-stone-400">⛺ Tent sites — first-come-first-served</span>
+                        <span className="block text-[11px] mt-0.5 font-medium text-emerald-700">
+                          🎟️ {totalOpenNow} currently open (all weeks)
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="block text-[11px] text-stone-400">{d.totalCabins} cabins (all full)</span>
+                        <span className="block text-[11px] text-stone-400">~{d.expectedCancellations} expected cancellations</span>
+                        <span className="block text-[11px] mt-0.5 font-medium">
+                          {d.totalFamilies > d.expectedCancellations
+                            ? <span className="text-red-600">{Math.round(d.totalFamilies / d.expectedCancellations)}x more waitlisted than expected openings</span>
+                            : <span className="text-emerald-600">More expected openings than waitlisted families</span>}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
 

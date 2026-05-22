@@ -1,205 +1,9 @@
 {
-  "scrapedAt": "2026-04-07T07:10:02.770310+00:00",
+  "scrapedAt": "2026-05-22T05:51:12.186016+00:00",
   "families": [
-    {
-      "rank": 1,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 2,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 5,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 6,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 7,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 8,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 9,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
     {
       "rank": 10,
       "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 11,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 12,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 13,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
         {
           "week": 12,
           "size": "4c"
@@ -210,810 +14,8 @@
       "rank": 14,
       "preferences": [
         {
-          "week": 11,
-          "size": "4c"
-        },
-        {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 15,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 16,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 17,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 18,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 19,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 20,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 21,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 22,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 23,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 24,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 25,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 26,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 27,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 28,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 29,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 30,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 31,
-      "preferences": [
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 32,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 33,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 34,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 35,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 36,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 37,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 38,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 39,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 40,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 41,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 42,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 43,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 44,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 45,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 46,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 47,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 48,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 49,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 50,
-      "preferences": [
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 51,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 52,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 53,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 54,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 55,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 56,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 57,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 58,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 59,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 60,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
         }
       ]
     },
@@ -1021,900 +23,12 @@
       "rank": 61,
       "preferences": [
         {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
           "week": 12,
           "size": "4c"
         },
         {
           "week": 12,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 62,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 63,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 64,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 65,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 66,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 67,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 68,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 69,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 70,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 71,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 72,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 73,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 74,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 75,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 76,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 77,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 78,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 79,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 80,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 81,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 82,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 83,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 84,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 85,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 86,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 87,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 88,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 89,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 90,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 91,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 92,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 93,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 94,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 95,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 96,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 97,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 98,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 99,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 100,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 101,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
         }
       ]
     },
@@ -1926,232 +40,7 @@
           "size": "4c"
         },
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 103,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 104,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 105,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 106,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 107,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 108,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 109,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 110,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 111,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
           "size": "4c"
         }
       ]
@@ -2164,10 +53,6 @@
           "size": "4c"
         },
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
           "week": 11,
           "size": "4c"
         }
@@ -2177,84 +62,12 @@
       "rank": 113,
       "preferences": [
         {
-          "week": 8,
-          "size": "6c"
-        },
-        {
           "week": 10,
           "size": "6c"
         },
         {
           "week": 11,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 114,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 115,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 116,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 117,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
         }
       ]
     },
@@ -2262,14 +75,6 @@
       "rank": 118,
       "preferences": [
         {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
           "week": 10,
           "size": "4c"
         },
@@ -2284,84 +89,12 @@
         {
           "week": 12,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 119,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 120,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 121,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 122,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
         }
       ]
     },
     {
       "rank": 123,
       "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
         {
           "week": 11,
           "size": "6c"
@@ -2384,14 +117,6 @@
       "rank": 124,
       "preferences": [
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
           "week": 11,
           "size": "4c"
         },
@@ -2405,93 +130,6 @@
         },
         {
           "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 125,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 126,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 127,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
           "size": "6c"
         }
       ]
@@ -2514,357 +152,14 @@
       ]
     },
     {
-      "rank": 129,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 130,
-      "preferences": [
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 131,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 132,
       "preferences": [
         {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
           "week": 11,
           "size": "6c"
         },
         {
           "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 133,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 134,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 135,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 136,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 137,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 138,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 139,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 140,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 141,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 142,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 143,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 144,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
           "size": "4c"
         }
       ]
@@ -2894,35 +189,6 @@
         },
         {
           "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 146,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -2966,110 +232,6 @@
       ]
     },
     {
-      "rank": 149,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 150,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 151,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 152,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 153,
       "preferences": [
         {
@@ -3096,35 +258,6 @@
       ]
     },
     {
-      "rank": 155,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 156,
       "preferences": [
         {
@@ -3142,64 +275,6 @@
       ]
     },
     {
-      "rank": 157,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 158,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 159,
       "preferences": [
         {
@@ -3211,128 +286,11 @@
           "size": "4c"
         },
         {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
           "week": 9,
           "size": "6c"
         },
         {
           "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 160,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 161,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 162,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 163,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 164,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -3345,75 +303,8 @@
           "size": "4c"
         },
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
           "week": 11,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 166,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 167,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 168,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
         }
       ]
     },
@@ -3427,35 +318,6 @@
         {
           "week": 9,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 170,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
         }
       ]
     },
@@ -3477,70 +339,8 @@
       ]
     },
     {
-      "rank": 172,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 173,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 174,
       "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
         {
           "week": 9,
           "size": "6c"
@@ -3572,135 +372,11 @@
       "rank": 176,
       "preferences": [
         {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
           "week": 11,
           "size": "6c"
         },
         {
           "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 177,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 178,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 179,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 180,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -3723,14 +399,6 @@
         {
           "week": 4,
           "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
         }
       ]
     },
@@ -3740,52 +408,6 @@
         {
           "week": 8,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 183,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 184,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
         }
       ]
     },
@@ -3810,27 +432,11 @@
       "rank": 186,
       "preferences": [
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
           "week": 11,
           "size": "4c"
         },
         {
           "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
           "size": "6c"
         }
       ]
@@ -3916,61 +522,6 @@
       ]
     },
     {
-      "rank": 191,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 192,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 193,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 194,
       "preferences": [
         {
@@ -4014,24 +565,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 198,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -4052,14 +586,6 @@
         },
         {
           "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -4107,123 +633,6 @@
       ]
     },
     {
-      "rank": 202,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 203,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 204,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 205,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 206,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 207,
       "preferences": [
         {
@@ -4250,152 +659,14 @@
       ]
     },
     {
-      "rank": 209,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 210,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 211,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 212,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 213,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 214,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 4,
           "size": "4c"
         },
         {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 215,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
           "size": "4c"
         }
       ]
@@ -4439,57 +710,11 @@
       ]
     },
     {
-      "rank": 218,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 219,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 220,
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -4502,64 +727,6 @@
         },
         {
           "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 222,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 223,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
           "size": "4c"
         }
       ]
@@ -4587,27 +754,6 @@
         {
           "week": 9,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 226,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -4653,10 +799,6 @@
           "size": "4c"
         },
         {
-          "week": 7,
-          "size": "4c"
-        },
-        {
           "week": 8,
           "size": "4c"
         }
@@ -4688,81 +830,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 231,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 232,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 233,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
         }
       ]
     },
@@ -4812,14 +879,6 @@
         },
         {
           "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
           "size": "4c"
         }
       ]
@@ -4871,36 +930,6 @@
       ]
     },
     {
-      "rank": 238,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 239,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 240,
       "preferences": [
         {
@@ -4910,27 +939,6 @@
         {
           "week": 10,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 241,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
         }
       ]
     },
@@ -5040,64 +1048,6 @@
       ]
     },
     {
-      "rank": 247,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 248,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 249,
       "preferences": [
         {
@@ -5136,35 +1086,6 @@
         {
           "week": 10,
           "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 251,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
         },
         {
           "week": 11,
@@ -5220,15 +1141,6 @@
       ]
     },
     {
-      "rank": 255,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 256,
       "preferences": [
         {
@@ -5270,15 +1182,6 @@
         },
         {
           "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 258,
-      "preferences": [
-        {
-          "week": 2,
           "size": "4c"
         }
       ]
@@ -5359,35 +1262,6 @@
       ]
     },
     {
-      "rank": 262,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 263,
       "preferences": [
         {
@@ -5417,27 +1291,6 @@
       ]
     },
     {
-      "rank": 264,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 265,
       "preferences": [
         {
@@ -5454,75 +1307,12 @@
       "rank": 266,
       "preferences": [
         {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
           "week": 11,
           "size": "3c"
         },
         {
           "week": 11,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 267,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 268,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 269,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
         }
       ]
     },
@@ -5548,52 +1338,6 @@
       ]
     },
     {
-      "rank": 271,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 272,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 273,
       "preferences": [
         {
@@ -5602,14 +1346,6 @@
         },
         {
           "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
           "size": "4c"
         },
         {
@@ -5682,35 +1418,6 @@
       ]
     },
     {
-      "rank": 277,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 278,
       "preferences": [
         {
@@ -5719,22 +1426,6 @@
         },
         {
           "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
           "size": "6c"
         }
       ]
@@ -5787,64 +1478,6 @@
       ]
     },
     {
-      "rank": 282,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 283,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 284,
       "preferences": [
         {
@@ -5869,48 +1502,6 @@
         },
         {
           "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 285,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 286,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "6c"
         }
       ]
@@ -6024,22 +1615,6 @@
     {
       "rank": 293,
       "preferences": [
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
         {
           "week": 10,
           "size": "3c"
@@ -6174,135 +1749,6 @@
       ]
     },
     {
-      "rank": 301,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 302,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 303,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 304,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 305,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 306,
       "preferences": [
         {
@@ -6362,52 +1808,6 @@
       ]
     },
     {
-      "rank": 309,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 310,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 311,
       "preferences": [
         {
@@ -6437,35 +1837,6 @@
       ]
     },
     {
-      "rank": 312,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 313,
       "preferences": [
         {
@@ -6478,111 +1849,6 @@
         },
         {
           "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 314,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 315,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "2c"
-        }
-      ]
-    },
-    {
-      "rank": 316,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 317,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 318,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
           "size": "4c"
         }
       ]
@@ -6647,35 +1913,6 @@
       ]
     },
     {
-      "rank": 322,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 323,
       "preferences": [
         {
@@ -6705,23 +1942,6 @@
       ]
     },
     {
-      "rank": 324,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 325,
       "preferences": [
         {
@@ -6734,35 +1954,6 @@
         },
         {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 326,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
           "size": "4c"
         }
       ]
@@ -6798,54 +1989,8 @@
       ]
     },
     {
-      "rank": 329,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 330,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 331,
       "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
         {
           "week": 4,
           "size": "3c"
@@ -6916,35 +2061,6 @@
       ]
     },
     {
-      "rank": 335,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 336,
       "preferences": [
         {
@@ -7010,23 +2126,6 @@
       ]
     },
     {
-      "rank": 341,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 342,
       "preferences": [
         {
@@ -7036,64 +2135,6 @@
         {
           "week": 4,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 343,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 344,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
         }
       ]
     },
@@ -7195,35 +2236,6 @@
       ]
     },
     {
-      "rank": 350,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 351,
       "preferences": [
         {
@@ -7240,35 +2252,6 @@
         },
         {
           "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 352,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -7320,23 +2303,6 @@
       ]
     },
     {
-      "rank": 355,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 356,
       "preferences": [
         {
@@ -7363,10 +2329,6 @@
         {
           "week": 4,
           "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
         }
       ]
     },
@@ -7379,35 +2341,6 @@
         },
         {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 359,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
           "size": "4c"
         }
       ]
@@ -7426,27 +2359,6 @@
         {
           "week": 11,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 361,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
         }
       ]
     },
@@ -7493,35 +2405,6 @@
         {
           "week": 11,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 364,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
         }
       ]
     },
@@ -7585,35 +2468,6 @@
         {
           "week": 10,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 368,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
         }
       ]
     },
@@ -7885,40 +2739,6 @@
       ]
     },
     {
-      "rank": 384,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 385,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 386,
       "preferences": [
         {
@@ -7960,22 +2780,6 @@
       "rank": 388,
       "preferences": [
         {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
           "week": 8,
           "size": "3c"
         },
@@ -7990,23 +2794,6 @@
       "preferences": [
         {
           "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 390,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -8139,15 +2926,6 @@
       ]
     },
     {
-      "rank": 398,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 399,
       "preferences": [
         {
@@ -8182,15 +2960,6 @@
       ]
     },
     {
-      "rank": 401,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 402,
       "preferences": [
         {
@@ -8215,23 +2984,6 @@
         },
         {
           "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 403,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
           "size": "4c"
         }
       ]
@@ -8311,14 +3063,6 @@
     {
       "rank": 408,
       "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
         {
           "week": 4,
           "size": "6c"
@@ -8425,64 +3169,6 @@
       ]
     },
     {
-      "rank": 412,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 413,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 414,
       "preferences": [
         {
@@ -8509,53 +3195,11 @@
       ]
     },
     {
-      "rank": 416,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 417,
       "preferences": [
         {
           "week": 9,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 418,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
         }
       ]
     },
@@ -8621,10 +3265,6 @@
       "rank": 421,
       "preferences": [
         {
-          "week": 7,
-          "size": "3c"
-        },
-        {
           "week": 8,
           "size": "3c"
         },
@@ -8664,56 +3304,6 @@
       ]
     },
     {
-      "rank": 423,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 424,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 425,
       "preferences": [
         {
@@ -8727,35 +3317,6 @@
         {
           "week": 12,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 426,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
         }
       ]
     },
@@ -8873,19 +3434,6 @@
       ]
     },
     {
-      "rank": 432,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 433,
       "preferences": [
         {
@@ -8944,29 +3492,8 @@
       ]
     },
     {
-      "rank": 435,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "2c"
-        },
-        {
-          "week": 3,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 436,
       "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
         {
           "week": 12,
           "size": "4c"
@@ -9109,52 +3636,6 @@
       ]
     },
     {
-      "rank": 444,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 445,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 446,
       "preferences": [
         {
@@ -9192,22 +3673,6 @@
         },
         {
           "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
           "size": "3c"
         }
       ]
@@ -9386,73 +3851,6 @@
       ]
     },
     {
-      "rank": 457,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 458,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 459,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 460,
       "preferences": [
         {
@@ -9478,14 +3876,6 @@
         },
         {
           "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
           "size": "4c"
         },
         {
@@ -9668,10 +4058,6 @@
           "size": "4c"
         },
         {
-          "week": 5,
-          "size": "4c"
-        },
-        {
           "week": 6,
           "size": "4c"
         }
@@ -9720,14 +4106,6 @@
         },
         {
           "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
           "size": "4c"
         },
         {
@@ -9789,22 +4167,6 @@
     {
       "rank": 474,
       "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
         {
           "week": 9,
           "size": "3c"
@@ -9982,14 +4344,6 @@
       "rank": 482,
       "preferences": [
         {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
           "week": 6,
           "size": "3c"
         },
@@ -10004,15 +4358,6 @@
         {
           "week": 7,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 483,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
         }
       ]
     },
@@ -10089,35 +4434,6 @@
       ]
     },
     {
-      "rank": 488,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 489,
       "preferences": [
         {
@@ -10149,10 +4465,6 @@
     {
       "rank": 490,
       "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
         {
           "week": 10,
           "size": "6c"
@@ -10190,19 +4502,6 @@
       "preferences": [
         {
           "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 494,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
           "size": "3c"
         }
       ]
@@ -10254,32 +4553,6 @@
       ]
     },
     {
-      "rank": 497,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 498,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 499,
       "preferences": [
         {
@@ -10289,23 +4562,6 @@
         {
           "week": 10,
           "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 500,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -10449,19 +4705,6 @@
       ]
     },
     {
-      "rank": 508,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 509,
       "preferences": [
         {
@@ -10479,52 +4722,6 @@
         {
           "week": 12,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 510,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 511,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
         }
       ]
     },
@@ -10558,45 +4755,8 @@
       ]
     },
     {
-      "rank": 513,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 514,
       "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
         {
           "week": 3,
           "size": "4c"
@@ -10743,19 +4903,6 @@
       ]
     },
     {
-      "rank": 522,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 523,
       "preferences": [
         {
@@ -10810,23 +4957,6 @@
         {
           "week": 12,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 525,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
         }
       ]
     },
@@ -10916,19 +5046,6 @@
         {
           "week": 4,
           "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        }
-      ]
-    },
-    {
-      "rank": 531,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
         }
       ]
     },
@@ -10982,14 +5099,6 @@
       "rank": 534,
       "preferences": [
         {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 6,
           "size": "6c"
         },
@@ -11033,35 +5142,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 536,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "2c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
         }
       ]
     },
@@ -11210,19 +5290,6 @@
       ]
     },
     {
-      "rank": 545,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 546,
       "preferences": [
         {
@@ -11248,19 +5315,6 @@
         {
           "week": 8,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 547,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
         }
       ]
     },
@@ -11428,10 +5482,6 @@
       "rank": 556,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 3,
           "size": "4c"
         },
@@ -11445,40 +5495,7 @@
       "rank": 557,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 558,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
           "size": "4c"
         }
       ]
@@ -11557,27 +5574,6 @@
         {
           "week": 6,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 564,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
         }
       ]
     },
@@ -11698,14 +5694,6 @@
       "rank": 570,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
           "week": 3,
           "size": "4c"
         },
@@ -11787,52 +5775,6 @@
       ]
     },
     {
-      "rank": 574,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 575,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 576,
       "preferences": [
         {
@@ -11899,35 +5841,6 @@
         },
         {
           "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 579,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
           "size": "4c"
         }
       ]
@@ -12020,19 +5933,6 @@
       ]
     },
     {
-      "rank": 583,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 584,
       "preferences": [
         {
@@ -12098,14 +5998,6 @@
     {
       "rank": 587,
       "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
         {
           "week": 12,
           "size": "4c"
@@ -12229,45 +6121,12 @@
       "rank": 593,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 6,
           "size": "4c"
         },
         {
           "week": 8,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 594,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "2c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
         }
       ]
     },
@@ -12431,23 +6290,6 @@
       ]
     },
     {
-      "rank": 602,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 603,
       "preferences": [
         {
@@ -12477,15 +6319,6 @@
       ]
     },
     {
-      "rank": 604,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 605,
       "preferences": [
         {
@@ -12499,35 +6332,6 @@
         {
           "week": 9,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 606,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
         }
       ]
     },
@@ -12573,19 +6377,6 @@
         },
         {
           "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 609,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
           "size": "6c"
         }
       ]
@@ -12649,23 +6440,6 @@
         },
         {
           "week": 8,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 613,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 4,
           "size": "3c"
         }
       ]
@@ -12752,23 +6526,6 @@
       ]
     },
     {
-      "rank": 619,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 620,
       "preferences": [
         {
@@ -12823,35 +6580,6 @@
         },
         {
           "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 623,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
           "size": "4c"
         }
       ]
@@ -12987,40 +6715,6 @@
       ]
     },
     {
-      "rank": 630,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 631,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 632,
       "preferences": [
         {
@@ -13050,23 +6744,6 @@
       ]
     },
     {
-      "rank": 633,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 634,
       "preferences": [
         {
@@ -13092,35 +6769,6 @@
         {
           "week": 11,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 635,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
         }
       ]
     },
@@ -13250,23 +6898,6 @@
       ]
     },
     {
-      "rank": 641,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 642,
       "preferences": [
         {
@@ -13342,35 +6973,6 @@
       ]
     },
     {
-      "rank": 645,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 646,
       "preferences": [
         {
@@ -13384,23 +6986,6 @@
         {
           "week": 9,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 647,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
         }
       ]
     },
@@ -13505,23 +7090,6 @@
         {
           "week": 6,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 652,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
         }
       ]
     },
@@ -13709,10 +7277,6 @@
       "rank": 661,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 3,
           "size": "4c"
         },
@@ -13801,14 +7365,6 @@
       "rank": 665,
       "preferences": [
         {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
           "week": 8,
           "size": "2c"
         },
@@ -13851,20 +7407,12 @@
       "rank": 667,
       "preferences": [
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
           "week": 11,
           "size": "4c"
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13969,35 +7517,6 @@
       ]
     },
     {
-      "rank": 672,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "2c"
-        },
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 673,
       "preferences": [
         {
@@ -14039,19 +7558,6 @@
         },
         {
           "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 675,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
           "size": "4c"
         }
       ]
@@ -14170,32 +7676,7 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 682,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -14262,7 +7743,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -14381,14 +7862,6 @@
       "rank": 693,
       "preferences": [
         {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
           "week": 4,
           "size": "3c"
         },
@@ -14436,64 +7909,6 @@
       ]
     },
     {
-      "rank": 695,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "2c"
-        }
-      ]
-    },
-    {
-      "rank": 696,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "2c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 697,
       "preferences": [
         {
@@ -14502,36 +7917,7 @@
         },
         {
           "week": 3,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 698,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -14545,35 +7931,6 @@
         {
           "week": 6,
           "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 700,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
         },
         {
           "week": 7,
@@ -14616,23 +7973,6 @@
         {
           "week": 7,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 703,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 10,
-          "size": "2c"
         }
       ]
     },
@@ -14757,7 +8097,7 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 3,
@@ -14765,7 +8105,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -14773,50 +8113,17 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
           "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 709,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
         }
       ]
     },
     {
       "rank": 710,
       "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
         {
           "week": 11,
           "size": "3c"
@@ -14924,35 +8231,6 @@
       ]
     },
     {
-      "rank": 715,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 716,
       "preferences": [
         {
@@ -15003,11 +8281,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -15028,23 +8306,6 @@
         },
         {
           "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 720,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 10,
           "size": "4c"
         }
       ]
@@ -15150,27 +8411,6 @@
         },
         {
           "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 726,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "2c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 11,
           "size": "3c"
         }
       ]
@@ -15323,23 +8563,6 @@
       ]
     },
     {
-      "rank": 734,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 735,
       "preferences": [
         {
@@ -15377,36 +8600,11 @@
           "size": "6c"
         },
         {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
           "week": 6,
           "size": "4c"
         },
         {
           "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 738,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
           "size": "6c"
         }
       ]
@@ -15437,23 +8635,6 @@
         {
           "week": 6,
           "size": "2c"
-        }
-      ]
-    },
-    {
-      "rank": 740,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
         }
       ]
     },
@@ -15518,7 +8699,7 @@
         },
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -15526,7 +8707,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
@@ -15534,7 +8715,7 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -15556,23 +8737,18 @@
       "preferences": [
         {
           "week": 4,
+          "size": "6t"
+        },
+        {
+          "week": 4,
           "size": "6c"
         },
         {
           "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 748,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
+          "size": "6t"
         },
         {
-          "week": 2,
+          "week": 6,
           "size": "6c"
         }
       ]
@@ -15620,52 +8796,6 @@
       ]
     },
     {
-      "rank": 751,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 752,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 753,
       "preferences": [
         {
@@ -15708,15 +8838,6 @@
         {
           "week": 12,
           "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 755,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
         }
       ]
     },
@@ -15786,14 +8907,6 @@
     {
       "rank": 759,
       "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
         {
           "week": 3,
           "size": "3c"
@@ -15909,48 +9022,6 @@
       ]
     },
     {
-      "rank": 764,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 765,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 766,
       "preferences": [
         {
@@ -16004,14 +9075,6 @@
       "rank": 768,
       "preferences": [
         {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 3,
           "size": "3c"
         },
@@ -16034,15 +9097,7 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -16131,10 +9186,6 @@
       "rank": 775,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 12,
           "size": "4c"
         }
@@ -16166,52 +9217,6 @@
         {
           "week": 10,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 777,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 778,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
         }
       ]
     },
@@ -16311,10 +9316,6 @@
       "rank": 783,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
-        },
-        {
           "week": 6,
           "size": "4c"
         },
@@ -16371,23 +9372,6 @@
       ]
     },
     {
-      "rank": 786,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 787,
       "preferences": [
         {
@@ -16434,35 +9418,6 @@
       ]
     },
     {
-      "rank": 789,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 790,
       "preferences": [
         {
@@ -16481,35 +9436,6 @@
         {
           "week": 3,
           "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 792,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
         }
       ]
     },
@@ -16568,23 +9494,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 795,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
         }
       ]
     },
@@ -16731,27 +9640,6 @@
       ]
     },
     {
-      "rank": 802,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 803,
       "preferences": [
         {
@@ -16815,35 +9703,6 @@
       ]
     },
     {
-      "rank": 806,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 1,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 807,
       "preferences": [
         {
@@ -16869,35 +9728,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 808,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
         }
       ]
     },
@@ -17053,26 +9883,10 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
           "size": "4c"
         }
       ]
@@ -17120,11 +9934,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -17182,23 +9996,6 @@
         },
         {
           "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 822,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
           "size": "6c"
         }
       ]
@@ -17271,14 +10068,6 @@
         {
           "week": 9,
           "size": "2c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "2c"
         }
       ]
     },
@@ -17333,35 +10122,6 @@
       ]
     },
     {
-      "rank": 828,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 829,
       "preferences": [
         {
@@ -17392,19 +10152,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 831,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
         }
       ]
     },
@@ -17446,14 +10193,6 @@
         },
         {
           "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 5,
           "size": "6c"
         },
         {
@@ -17638,35 +10377,6 @@
       ]
     },
     {
-      "rank": 841,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "2c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 842,
       "preferences": [
         {
@@ -17734,44 +10444,6 @@
       ]
     },
     {
-      "rank": 845,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 846,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 847,
       "preferences": [
         {
@@ -17810,35 +10482,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 849,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -17889,23 +10532,6 @@
       ]
     },
     {
-      "rank": 852,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 853,
       "preferences": [
         {
@@ -17952,35 +10578,6 @@
       ]
     },
     {
-      "rank": 855,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 856,
       "preferences": [
         {
@@ -17994,23 +10591,6 @@
         {
           "week": 6,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 857,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -18041,23 +10621,6 @@
         {
           "week": 5,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 860,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
         }
       ]
     },
@@ -18258,35 +10821,6 @@
       ]
     },
     {
-      "rank": 869,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 870,
       "preferences": [
         {
@@ -18329,35 +10863,6 @@
       ]
     },
     {
-      "rank": 872,
-      "preferences": [
-        {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "2c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 873,
       "preferences": [
         {
@@ -18375,35 +10880,6 @@
         {
           "week": 8,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 874,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "2c"
-        },
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "2c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
         }
       ]
     },
@@ -18433,23 +10909,6 @@
         {
           "week": 11,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 876,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
         }
       ]
     },
@@ -18560,7 +11019,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
@@ -18568,7 +11027,7 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -18576,36 +11035,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 884,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -18694,40 +11124,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 890,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -18812,35 +11213,6 @@
         {
           "week": 6,
           "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 895,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -18932,23 +11304,6 @@
       ]
     },
     {
-      "rank": 899,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "2c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 12,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 900,
       "preferences": [
         {
@@ -19008,27 +11363,6 @@
       ]
     },
     {
-      "rank": 903,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 904,
       "preferences": [
         {
@@ -19041,23 +11375,6 @@
         },
         {
           "week": 8,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 905,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
           "size": "6c"
         }
       ]
@@ -19093,23 +11410,6 @@
       ]
     },
     {
-      "rank": 908,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 909,
       "preferences": [
         {
@@ -19135,23 +11435,6 @@
         {
           "week": 7,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 910,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -19312,33 +11595,16 @@
           "size": "6c"
         },
         {
-          "week": 4,
-          "size": "6c"
+          "week": 3,
+          "size": "6t"
         },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 921,
-      "preferences": [
         {
           "week": 4,
           "size": "6c"
         },
         {
           "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
+          "size": "6t"
         },
         {
           "week": 10,
@@ -19346,7 +11612,7 @@
         },
         {
           "week": 10,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -19364,27 +11630,6 @@
         {
           "week": 12,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 923,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
         }
       ]
     },
@@ -19470,7 +11715,7 @@
       "preferences": [
         {
           "week": 9,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 9,
@@ -19478,7 +11723,7 @@
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
@@ -19486,7 +11731,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -19730,27 +11975,6 @@
       ]
     },
     {
-      "rank": 941,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 942,
       "preferences": [
         {
@@ -19788,7 +12012,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -19957,36 +12181,6 @@
       ]
     },
     {
-      "rank": 952,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 953,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 954,
       "preferences": [
         {
@@ -20062,48 +12256,19 @@
       ]
     },
     {
-      "rank": 957,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 958,
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -20133,14 +12298,6 @@
         },
         {
           "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
           "size": "4c"
         },
         {
@@ -20221,93 +12378,6 @@
       ]
     },
     {
-      "rank": 964,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "2c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "2c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 965,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 966,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 967,
       "preferences": [
         {
@@ -20373,12 +12443,16 @@
           "size": "6c"
         },
         {
+          "week": 10,
+          "size": "6t"
+        },
+        {
           "week": 11,
           "size": "6c"
         },
         {
-          "week": 12,
-          "size": "6c"
+          "week": 11,
+          "size": "6t"
         }
       ]
     },
@@ -20408,35 +12482,6 @@
         {
           "week": 6,
           "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 971,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
         }
       ]
     },
@@ -20489,14 +12534,6 @@
     {
       "rank": 974,
       "preferences": [
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "6c"
-        },
         {
           "week": 10,
           "size": "4c"
@@ -20729,35 +12766,6 @@
       ]
     },
     {
-      "rank": 984,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
-        }
-      ]
-    },
-    {
       "rank": 985,
       "preferences": [
         {
@@ -20843,89 +12851,14 @@
       ]
     },
     {
-      "rank": 990,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 991,
-      "preferences": [
-        {
-          "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 992,
       "preferences": [
         {
           "week": 11,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 993,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "4c"
+          "size": "6t"
         },
         {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
+          "week": 11,
           "size": "6c"
         }
       ]
@@ -20990,36 +12923,6 @@
       ]
     },
     {
-      "rank": 997,
-      "preferences": [
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 998,
-      "preferences": [
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
       "rank": 999,
       "preferences": [
         {
@@ -21040,12 +12943,12 @@
       "rank": 1000,
       "preferences": [
         {
-          "week": 9,
+          "week": 10,
           "size": "6c"
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -21096,35 +12999,6 @@
       ]
     },
     {
-      "rank": 1003,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 6,
-          "size": "2c"
-        },
-        {
-          "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "2c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        }
-      ]
-    },
-    {
       "rank": 1004,
       "preferences": [
         {
@@ -21138,24 +13012,15 @@
       ]
     },
     {
-      "rank": 1005,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        }
-      ]
-    },
-    {
       "rank": 1006,
       "preferences": [
         {
-          "week": 8,
-          "size": "6c"
+          "week": 9,
+          "size": "4c"
         },
         {
-          "week": 8,
-          "size": "4c"
+          "week": 9,
+          "size": "6c"
         }
       ]
     },
@@ -21163,7 +13028,7 @@
       "rank": 1007,
       "preferences": [
         {
-          "week": 9,
+          "week": 10,
           "size": "2c"
         }
       ]
@@ -21173,14 +13038,10 @@
       "preferences": [
         {
           "week": 6,
-          "size": "4c"
+          "size": "6c"
         },
         {
           "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
           "size": "4c"
         },
         {
@@ -21188,12 +13049,16 @@
           "size": "6c"
         },
         {
-          "week": 10,
+          "week": 7,
           "size": "4c"
         },
         {
           "week": 10,
           "size": "6c"
+        },
+        {
+          "week": 10,
+          "size": "4c"
         }
       ]
     },
@@ -21210,28 +13075,28 @@
       "rank": 1010,
       "preferences": [
         {
-          "week": 3,
+          "week": 7,
+          "size": "6c"
+        },
+        {
+          "week": 7,
           "size": "4c"
         },
         {
-          "week": 3,
-          "size": "3c"
+          "week": 8,
+          "size": "6c"
         },
         {
-          "week": 4,
+          "week": 8,
           "size": "4c"
         },
         {
-          "week": 4,
-          "size": "3c"
+          "week": 9,
+          "size": "6c"
         },
         {
-          "week": 10,
+          "week": 9,
           "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
         }
       ]
     },
@@ -21239,27 +13104,15 @@
       "rank": 1011,
       "preferences": [
         {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
           "week": 8,
           "size": "4c"
         },
         {
           "week": 9,
-          "size": "6c"
+          "size": "4c"
         },
         {
-          "week": 9,
+          "week": 10,
           "size": "4c"
         }
       ]
@@ -21268,16 +13121,28 @@
       "rank": 1012,
       "preferences": [
         {
-          "week": 8,
+          "week": 3,
           "size": "4c"
         },
         {
-          "week": 9,
+          "week": 3,
+          "size": "6t"
+        },
+        {
+          "week": 4,
           "size": "4c"
         },
         {
-          "week": 10,
+          "week": 4,
+          "size": "6t"
+        },
+        {
+          "week": 11,
           "size": "4c"
+        },
+        {
+          "week": 11,
+          "size": "6t"
         }
       ]
     },
@@ -21285,28 +13150,16 @@
       "rank": 1013,
       "preferences": [
         {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
           "week": 4,
           "size": "4c"
         },
         {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 11,
+          "week": 8,
           "size": "4c"
         },
         {
-          "week": 11,
-          "size": "6c"
+          "week": 9,
+          "size": "4c"
         }
       ]
     },
@@ -21315,14 +13168,26 @@
       "preferences": [
         {
           "week": 4,
+          "size": "3c"
+        },
+        {
+          "week": 4,
+          "size": "4c"
+        },
+        {
+          "week": 5,
+          "size": "3c"
+        },
+        {
+          "week": 5,
           "size": "4c"
         },
         {
           "week": 8,
-          "size": "4c"
+          "size": "3c"
         },
         {
-          "week": 9,
+          "week": 8,
           "size": "4c"
         }
       ]
@@ -21331,27 +13196,11 @@
       "rank": 1015,
       "preferences": [
         {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 4,
+          "week": 11,
           "size": "4c"
         },
         {
-          "week": 5,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 8,
+          "week": 12,
           "size": "4c"
         }
       ]
@@ -21360,12 +13209,28 @@
       "rank": 1016,
       "preferences": [
         {
-          "week": 11,
-          "size": "4c"
+          "week": 4,
+          "size": "2c"
         },
         {
-          "week": 12,
-          "size": "4c"
+          "week": 4,
+          "size": "3c"
+        },
+        {
+          "week": 7,
+          "size": "2c"
+        },
+        {
+          "week": 7,
+          "size": "3c"
+        },
+        {
+          "week": 8,
+          "size": "2c"
+        },
+        {
+          "week": 8,
+          "size": "3c"
         }
       ]
     },
@@ -21373,57 +13238,12 @@
       "rank": 1017,
       "preferences": [
         {
-          "week": 4,
-          "size": "2c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "2c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
           "week": 8,
           "size": "2c"
         },
         {
           "week": 8,
           "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 1018,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
         }
       ]
     },
@@ -21431,12 +13251,20 @@
       "rank": 1019,
       "preferences": [
         {
-          "week": 8,
-          "size": "2c"
+          "week": 3,
+          "size": "4c"
         },
         {
-          "week": 8,
-          "size": "3c"
+          "week": 3,
+          "size": "6c"
+        },
+        {
+          "week": 4,
+          "size": "4c"
+        },
+        {
+          "week": 4,
+          "size": "6c"
         }
       ]
     },
@@ -21444,27 +13272,19 @@
       "rank": 1020,
       "preferences": [
         {
-          "week": 5,
-          "size": "3c"
+          "week": 3,
+          "size": "6c"
         },
         {
-          "week": 5,
+          "week": 3,
           "size": "4c"
         },
         {
-          "week": 6,
-          "size": "3c"
+          "week": 4,
+          "size": "6c"
         },
         {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 7,
+          "week": 4,
           "size": "4c"
         }
       ]
@@ -21473,56 +13293,6 @@
       "rank": 1021,
       "preferences": [
         {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 1022,
-      "preferences": [
-        {
-          "week": 2,
-          "size": "6c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 1023,
-      "preferences": [
-        {
           "week": 9,
           "size": "4c"
         },
@@ -21532,6 +13302,44 @@
         },
         {
           "week": 11,
+          "size": "4c"
+        }
+      ]
+    },
+    {
+      "rank": 1022,
+      "preferences": [
+        {
+          "week": 6,
+          "size": "6c"
+        }
+      ]
+    },
+    {
+      "rank": 1023,
+      "preferences": [
+        {
+          "week": 5,
+          "size": "6c"
+        },
+        {
+          "week": 5,
+          "size": "4c"
+        },
+        {
+          "week": 11,
+          "size": "6c"
+        },
+        {
+          "week": 11,
+          "size": "4c"
+        },
+        {
+          "week": 12,
+          "size": "6c"
+        },
+        {
+          "week": 12,
           "size": "4c"
         }
       ]
@@ -21540,16 +13348,28 @@
       "rank": 1024,
       "preferences": [
         {
-          "week": 2,
-          "size": "6c"
+          "week": 9,
+          "size": "2c"
         },
         {
-          "week": 6,
-          "size": "6c"
+          "week": 9,
+          "size": "3c"
         },
         {
-          "week": 12,
-          "size": "6c"
+          "week": 10,
+          "size": "2c"
+        },
+        {
+          "week": 10,
+          "size": "3c"
+        },
+        {
+          "week": 11,
+          "size": "2c"
+        },
+        {
+          "week": 11,
+          "size": "3c"
         }
       ]
     },
@@ -21558,26 +13378,6 @@
       "preferences": [
         {
           "week": 5,
-          "size": "6c"
-        },
-        {
-          "week": 5,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
           "size": "4c"
         }
       ]
@@ -21586,28 +13386,12 @@
       "rank": 1026,
       "preferences": [
         {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
           "week": 10,
-          "size": "2c"
+          "size": "4c"
         },
         {
-          "week": 10,
-          "size": "3c"
-        },
-        {
-          "week": 11,
-          "size": "2c"
-        },
-        {
-          "week": 11,
-          "size": "3c"
+          "week": 12,
+          "size": "4c"
         }
       ]
     },
@@ -21615,11 +13399,27 @@
       "rank": 1027,
       "preferences": [
         {
-          "week": 2,
+          "week": 6,
+          "size": "2c"
+        },
+        {
+          "week": 6,
           "size": "4c"
         },
         {
-          "week": 5,
+          "week": 11,
+          "size": "2c"
+        },
+        {
+          "week": 11,
+          "size": "4c"
+        },
+        {
+          "week": 12,
+          "size": "2c"
+        },
+        {
+          "week": 12,
           "size": "4c"
         }
       ]
@@ -21628,16 +13428,16 @@
       "rank": 1028,
       "preferences": [
         {
-          "week": 2,
-          "size": "4c"
+          "week": 6,
+          "size": "6t"
+        },
+        {
+          "week": 7,
+          "size": "6t"
         },
         {
           "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -21645,28 +13445,28 @@
       "rank": 1029,
       "preferences": [
         {
-          "week": 6,
+          "week": 7,
           "size": "2c"
         },
         {
-          "week": 6,
-          "size": "4c"
+          "week": 7,
+          "size": "3c"
         },
         {
-          "week": 11,
+          "week": 8,
           "size": "2c"
         },
         {
-          "week": 11,
-          "size": "4c"
+          "week": 8,
+          "size": "3c"
         },
         {
-          "week": 12,
+          "week": 9,
           "size": "2c"
         },
         {
-          "week": 12,
-          "size": "4c"
+          "week": 9,
+          "size": "3c"
         }
       ]
     },
@@ -21675,66 +13475,20 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 7,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
     {
       "rank": 1031,
-      "preferences": [
-        {
-          "week": 7,
-          "size": "2c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "2c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 1032,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 1033,
       "preferences": [
         {
           "week": 10,
@@ -21751,7 +13505,7 @@
       ]
     },
     {
-      "rank": 1034,
+      "rank": 1032,
       "preferences": [
         {
           "week": 7,
@@ -21768,7 +13522,7 @@
       ]
     },
     {
-      "rank": 1035,
+      "rank": 1033,
       "preferences": [
         {
           "week": 7,
@@ -21792,6 +13546,52 @@
         },
         {
           "week": 10,
+          "size": "3c"
+        }
+      ]
+    },
+    {
+      "rank": 1034,
+      "preferences": [
+        {
+          "week": 4,
+          "size": "3c"
+        },
+        {
+          "week": 5,
+          "size": "3c"
+        },
+        {
+          "week": 6,
+          "size": "3c"
+        }
+      ]
+    },
+    {
+      "rank": 1035,
+      "preferences": [
+        {
+          "week": 1,
+          "size": "4c"
+        },
+        {
+          "week": 1,
+          "size": "3c"
+        },
+        {
+          "week": 3,
+          "size": "4c"
+        },
+        {
+          "week": 3,
+          "size": "3c"
+        },
+        {
+          "week": 4,
+          "size": "4c"
+        },
+        {
+          "week": 4,
           "size": "3c"
         }
       ]
@@ -21801,66 +13601,20 @@
       "preferences": [
         {
           "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 5,
-          "size": "3c"
+          "size": "6t"
         },
         {
           "week": 6,
-          "size": "3c"
+          "size": "6t"
+        },
+        {
+          "week": 7,
+          "size": "6t"
         }
       ]
     },
     {
       "rank": 1037,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 1,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 4,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 1038,
-      "preferences": [
-        {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 1039,
       "preferences": [
         {
           "week": 4,
@@ -21877,7 +13631,7 @@
       ]
     },
     {
-      "rank": 1040,
+      "rank": 1038,
       "preferences": [
         {
           "week": 2,
@@ -21902,53 +13656,53 @@
         {
           "week": 4,
           "size": "3c"
+        }
+      ]
+    },
+    {
+      "rank": 1039,
+      "preferences": [
+        {
+          "week": 6,
+          "size": "6c"
+        },
+        {
+          "week": 6,
+          "size": "4c"
+        },
+        {
+          "week": 7,
+          "size": "6c"
+        },
+        {
+          "week": 7,
+          "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "6c"
+        },
+        {
+          "week": 10,
+          "size": "4c"
+        }
+      ]
+    },
+    {
+      "rank": 1040,
+      "preferences": [
+        {
+          "week": 10,
+          "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "6c"
         }
       ]
     },
     {
       "rank": 1041,
-      "preferences": [
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 1042,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        }
-      ]
-    },
-    {
-      "rank": 1043,
       "preferences": [
         {
           "week": 9,
@@ -21965,7 +13719,7 @@
       ]
     },
     {
-      "rank": 1044,
+      "rank": 1042,
       "preferences": [
         {
           "week": 3,
@@ -21990,6 +13744,64 @@
         {
           "week": 11,
           "size": "6c"
+        }
+      ]
+    },
+    {
+      "rank": 1043,
+      "preferences": [
+        {
+          "week": 4,
+          "size": "6c"
+        },
+        {
+          "week": 4,
+          "size": "4c"
+        },
+        {
+          "week": 11,
+          "size": "6c"
+        },
+        {
+          "week": 11,
+          "size": "4c"
+        },
+        {
+          "week": 12,
+          "size": "6c"
+        },
+        {
+          "week": 12,
+          "size": "4c"
+        }
+      ]
+    },
+    {
+      "rank": 1044,
+      "preferences": [
+        {
+          "week": 1,
+          "size": "2c"
+        },
+        {
+          "week": 1,
+          "size": "3c"
+        },
+        {
+          "week": 2,
+          "size": "2c"
+        },
+        {
+          "week": 2,
+          "size": "3c"
+        },
+        {
+          "week": 4,
+          "size": "2c"
+        },
+        {
+          "week": 4,
+          "size": "3c"
         }
       ]
     },
@@ -21998,27 +13810,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 4,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
+          "size": "6t"
         }
       ]
     },
@@ -22026,27 +13818,27 @@
       "rank": 1046,
       "preferences": [
         {
-          "week": 1,
-          "size": "2c"
+          "week": 6,
+          "size": "4c"
         },
         {
-          "week": 1,
+          "week": 6,
           "size": "3c"
         },
         {
-          "week": 2,
-          "size": "2c"
+          "week": 7,
+          "size": "4c"
         },
         {
-          "week": 2,
+          "week": 7,
           "size": "3c"
         },
         {
-          "week": 4,
-          "size": "2c"
+          "week": 8,
+          "size": "4c"
         },
         {
-          "week": 4,
+          "week": 8,
           "size": "3c"
         }
       ]
@@ -22055,8 +13847,28 @@
       "rank": 1047,
       "preferences": [
         {
+          "week": 2,
+          "size": "2c"
+        },
+        {
+          "week": 2,
+          "size": "3c"
+        },
+        {
+          "week": 3,
+          "size": "2c"
+        },
+        {
+          "week": 3,
+          "size": "3c"
+        },
+        {
           "week": 4,
-          "size": "6c"
+          "size": "2c"
+        },
+        {
+          "week": 4,
+          "size": "3c"
         }
       ]
     },
@@ -22069,23 +13881,7 @@
         },
         {
           "week": 6,
-          "size": "3c"
-        },
-        {
-          "week": 7,
-          "size": "4c"
-        },
-        {
-          "week": 7,
-          "size": "3c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
+          "size": "6c"
         }
       ]
     },
@@ -22093,14 +13889,6 @@
       "rank": 1049,
       "preferences": [
         {
-          "week": 2,
-          "size": "2c"
-        },
-        {
-          "week": 2,
-          "size": "3c"
-        },
-        {
           "week": 3,
           "size": "2c"
         },
@@ -22114,6 +13902,14 @@
         },
         {
           "week": 4,
+          "size": "3c"
+        },
+        {
+          "week": 8,
+          "size": "2c"
+        },
+        {
+          "week": 8,
           "size": "3c"
         }
       ]
@@ -22122,12 +13918,28 @@
       "rank": 1050,
       "preferences": [
         {
-          "week": 6,
-          "size": "4c"
+          "week": 3,
+          "size": "6c"
+        },
+        {
+          "week": 3,
+          "size": "6t"
         },
         {
           "week": 6,
           "size": "6c"
+        },
+        {
+          "week": 6,
+          "size": "6t"
+        },
+        {
+          "week": 7,
+          "size": "6c"
+        },
+        {
+          "week": 7,
+          "size": "6t"
         }
       ]
     },
@@ -22135,28 +13947,16 @@
       "rank": 1051,
       "preferences": [
         {
-          "week": 3,
+          "week": 1,
           "size": "2c"
         },
         {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 4,
+          "week": 2,
           "size": "2c"
         },
         {
           "week": 4,
-          "size": "3c"
-        },
-        {
-          "week": 8,
           "size": "2c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
         }
       ]
     },
@@ -22164,16 +13964,8 @@
       "rank": 1052,
       "preferences": [
         {
-          "week": 3,
-          "size": "6c"
-        },
-        {
-          "week": 6,
-          "size": "6c"
-        },
-        {
-          "week": 7,
-          "size": "6c"
+          "week": 2,
+          "size": "4c"
         }
       ]
     },
@@ -22181,63 +13973,33 @@
       "rank": 1053,
       "preferences": [
         {
-          "week": 1,
-          "size": "2c"
+          "week": 8,
+          "size": "6c"
         },
         {
-          "week": 2,
-          "size": "2c"
+          "week": 8,
+          "size": "4c"
         },
         {
-          "week": 4,
-          "size": "2c"
+          "week": 9,
+          "size": "6c"
+        },
+        {
+          "week": 9,
+          "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "6c"
+        },
+        {
+          "week": 10,
+          "size": "4c"
         }
       ]
     },
     {
       "rank": 1054,
-      "preferences": [
-        {
-          "week": 1,
-          "size": "4c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 1055,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "6c"
-        },
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 1056,
       "preferences": [
         {
           "week": 6,
@@ -22246,11 +14008,57 @@
       ]
     },
     {
-      "rank": 1057,
+      "rank": 1055,
       "preferences": [
         {
           "week": 9,
-          "size": "6c"
+          "size": "6t"
+        }
+      ]
+    },
+    {
+      "rank": 1056,
+      "preferences": [
+        {
+          "week": 7,
+          "size": "3c"
+        },
+        {
+          "week": 7,
+          "size": "4c"
+        },
+        {
+          "week": 8,
+          "size": "3c"
+        },
+        {
+          "week": 8,
+          "size": "4c"
+        },
+        {
+          "week": 9,
+          "size": "3c"
+        },
+        {
+          "week": 9,
+          "size": "4c"
+        }
+      ]
+    },
+    {
+      "rank": 1057,
+      "preferences": [
+        {
+          "week": 6,
+          "size": "6t"
+        },
+        {
+          "week": 10,
+          "size": "6t"
+        },
+        {
+          "week": 11,
+          "size": "6t"
         }
       ]
     },
@@ -22259,26 +14067,26 @@
       "preferences": [
         {
           "week": 7,
-          "size": "3c"
+          "size": "6c"
         },
         {
           "week": 7,
           "size": "4c"
         },
         {
-          "week": 8,
-          "size": "3c"
+          "week": 9,
+          "size": "6c"
         },
         {
-          "week": 8,
+          "week": 9,
           "size": "4c"
         },
         {
-          "week": 9,
-          "size": "3c"
+          "week": 10,
+          "size": "6c"
         },
         {
-          "week": 9,
+          "week": 10,
           "size": "4c"
         }
       ]
@@ -22287,15 +14095,11 @@
       "rank": 1059,
       "preferences": [
         {
-          "week": 6,
-          "size": "6c"
+          "week": 10,
+          "size": "4c"
         },
         {
           "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
           "size": "6c"
         }
       ]
@@ -22305,23 +14109,11 @@
       "preferences": [
         {
           "week": 7,
-          "size": "6c"
-        },
-        {
-          "week": 7,
           "size": "4c"
         },
         {
           "week": 9,
-          "size": "6c"
-        },
-        {
-          "week": 9,
           "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
         },
         {
           "week": 10,
@@ -22333,12 +14125,8 @@
       "rank": 1061,
       "preferences": [
         {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
+          "week": 9,
+          "size": "6t"
         }
       ]
     },
@@ -22346,16 +14134,28 @@
       "rank": 1062,
       "preferences": [
         {
-          "week": 7,
+          "week": 4,
           "size": "4c"
         },
         {
-          "week": 9,
-          "size": "4c"
+          "week": 4,
+          "size": "6t"
         },
         {
           "week": 10,
           "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "6t"
+        },
+        {
+          "week": 11,
+          "size": "4c"
+        },
+        {
+          "week": 11,
+          "size": "6t"
         }
       ]
     },
@@ -22363,8 +14163,28 @@
       "rank": 1063,
       "preferences": [
         {
-          "week": 9,
-          "size": "6c"
+          "week": 2,
+          "size": "3c"
+        },
+        {
+          "week": 2,
+          "size": "4c"
+        },
+        {
+          "week": 3,
+          "size": "3c"
+        },
+        {
+          "week": 3,
+          "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "3c"
+        },
+        {
+          "week": 10,
+          "size": "4c"
         }
       ]
     },
@@ -22372,28 +14192,12 @@
       "rank": 1064,
       "preferences": [
         {
-          "week": 4,
-          "size": "4c"
+          "week": 3,
+          "size": "2c"
         },
         {
-          "week": 4,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
+          "week": 12,
+          "size": "2c"
         }
       ]
     },
@@ -22401,27 +14205,27 @@
       "rank": 1065,
       "preferences": [
         {
-          "week": 2,
-          "size": "3c"
-        },
-        {
-          "week": 2,
-          "size": "4c"
-        },
-        {
-          "week": 3,
-          "size": "3c"
-        },
-        {
-          "week": 3,
-          "size": "4c"
+          "week": 10,
+          "size": "6c"
         },
         {
           "week": 10,
-          "size": "3c"
+          "size": "4c"
         },
         {
-          "week": 10,
+          "week": 11,
+          "size": "6c"
+        },
+        {
+          "week": 11,
+          "size": "4c"
+        },
+        {
+          "week": 12,
+          "size": "6c"
+        },
+        {
+          "week": 12,
           "size": "4c"
         }
       ]
@@ -22430,75 +14234,33 @@
       "rank": 1066,
       "preferences": [
         {
-          "week": 3,
-          "size": "2c"
+          "week": 8,
+          "size": "4c"
         },
         {
-          "week": 12,
-          "size": "2c"
+          "week": 8,
+          "size": "3c"
+        },
+        {
+          "week": 9,
+          "size": "4c"
+        },
+        {
+          "week": 9,
+          "size": "3c"
+        },
+        {
+          "week": 10,
+          "size": "4c"
+        },
+        {
+          "week": 10,
+          "size": "3c"
         }
       ]
     },
     {
       "rank": 1067,
-      "preferences": [
-        {
-          "week": 10,
-          "size": "6c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 11,
-          "size": "6c"
-        },
-        {
-          "week": 11,
-          "size": "4c"
-        },
-        {
-          "week": 12,
-          "size": "6c"
-        },
-        {
-          "week": 12,
-          "size": "4c"
-        }
-      ]
-    },
-    {
-      "rank": 1068,
-      "preferences": [
-        {
-          "week": 8,
-          "size": "4c"
-        },
-        {
-          "week": 8,
-          "size": "3c"
-        },
-        {
-          "week": 9,
-          "size": "4c"
-        },
-        {
-          "week": 9,
-          "size": "3c"
-        },
-        {
-          "week": 10,
-          "size": "4c"
-        },
-        {
-          "week": 10,
-          "size": "3c"
-        }
-      ]
-    },
-    {
-      "rank": 1069,
       "preferences": [
         {
           "week": 2,

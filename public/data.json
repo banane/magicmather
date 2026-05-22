@@ -1,5 +1,5 @@
 {
-  "scrapedAt": "2026-05-21T19:49:49.836402+00:00",
+  "scrapedAt": "2026-05-22T05:51:12.186016+00:00",
   "families": [
     {
       "rank": 10,
@@ -565,7 +565,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -714,7 +714,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -7412,7 +7412,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -7676,7 +7676,7 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -7743,7 +7743,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -7917,7 +7917,7 @@
         },
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -8097,7 +8097,7 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 3,
@@ -8105,7 +8105,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -8113,7 +8113,7 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
@@ -8281,11 +8281,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -8699,7 +8699,7 @@
         },
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -8707,7 +8707,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
@@ -8715,7 +8715,7 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -8737,7 +8737,15 @@
       "preferences": [
         {
           "week": 4,
+          "size": "6t"
+        },
+        {
+          "week": 4,
           "size": "6c"
+        },
+        {
+          "week": 6,
+          "size": "6t"
         },
         {
           "week": 6,
@@ -9089,7 +9097,7 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -9875,7 +9883,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -9926,11 +9934,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -11011,7 +11019,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
@@ -11019,7 +11027,7 @@
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -11027,7 +11035,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -11116,11 +11124,11 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -11587,12 +11595,24 @@
           "size": "6c"
         },
         {
+          "week": 3,
+          "size": "6t"
+        },
+        {
           "week": 4,
           "size": "6c"
         },
         {
+          "week": 4,
+          "size": "6t"
+        },
+        {
           "week": 10,
           "size": "6c"
+        },
+        {
+          "week": 10,
+          "size": "6t"
         }
       ]
     },
@@ -11695,7 +11715,7 @@
       "preferences": [
         {
           "week": 9,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 9,
@@ -11703,7 +11723,7 @@
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
@@ -11711,7 +11731,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -11992,7 +12012,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -12240,15 +12260,15 @@
       "preferences": [
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -12423,8 +12443,16 @@
           "size": "6c"
         },
         {
+          "week": 10,
+          "size": "6t"
+        },
+        {
           "week": 11,
           "size": "6c"
+        },
+        {
+          "week": 11,
+          "size": "6t"
         }
       ]
     },
@@ -12827,6 +12855,10 @@
       "preferences": [
         {
           "week": 11,
+          "size": "6t"
+        },
+        {
+          "week": 11,
           "size": "6c"
         }
       ]
@@ -12913,6 +12945,10 @@
         {
           "week": 10,
           "size": "6c"
+        },
+        {
+          "week": 10,
+          "size": "6t"
         }
       ]
     },
@@ -13090,7 +13126,7 @@
         },
         {
           "week": 3,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 4,
@@ -13098,7 +13134,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -13106,7 +13142,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13393,15 +13429,15 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 7,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13439,15 +13475,15 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 7,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13565,15 +13601,15 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 7,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13774,7 +13810,7 @@
       "preferences": [
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -13886,12 +13922,24 @@
           "size": "6c"
         },
         {
+          "week": 3,
+          "size": "6t"
+        },
+        {
           "week": 6,
           "size": "6c"
         },
         {
+          "week": 6,
+          "size": "6t"
+        },
+        {
           "week": 7,
           "size": "6c"
+        },
+        {
+          "week": 7,
+          "size": "6t"
         }
       ]
     },
@@ -13964,7 +14012,7 @@
       "preferences": [
         {
           "week": 9,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -14002,15 +14050,15 @@
       "preferences": [
         {
           "week": 6,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -14078,7 +14126,7 @@
       "preferences": [
         {
           "week": 9,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },
@@ -14091,7 +14139,7 @@
         },
         {
           "week": 4,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 10,
@@ -14099,7 +14147,7 @@
         },
         {
           "week": 10,
-          "size": "6c"
+          "size": "6t"
         },
         {
           "week": 11,
@@ -14107,7 +14155,7 @@
         },
         {
           "week": 11,
-          "size": "6c"
+          "size": "6t"
         }
       ]
     },

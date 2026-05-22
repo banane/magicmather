@@ -35,7 +35,7 @@ describe('buildFullInventory', () => {
   });
 
   it('each week has correct cabin counts', () => {
-    expect(buildFullInventory()[1]).toEqual({ '2c': 9, '3c': 16, '4c': 15, '6c': 28 });
+    expect(buildFullInventory()[1]).toEqual({ '2c': 9, '3c': 16, '4c': 15, '6c': 28, '6t': 0 });
   });
 });
 
@@ -195,8 +195,8 @@ describe('computeCabinDemand', () => {
     expect(d4c.expectedCancellations).toBeGreaterThan(0);
   });
 
-  it('returns all 4 sizes for empty waitlist', () => {
-    expect(computeCabinDemand([])).toHaveLength(4);
+  it('returns all 5 sizes for empty waitlist', () => {
+    expect(computeCabinDemand([])).toHaveLength(5);
   });
 });
 

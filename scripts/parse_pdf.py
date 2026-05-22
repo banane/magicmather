@@ -30,6 +30,9 @@ CABIN_MAP = {
     "6": "6c",
 }
 
+# Tent site codes (treated separately from cabins).
+TENT_CODES = {"6PTS", "6TS"}
+
 
 def extract_tables_to_rows(pdf_path):
     """Extract tabular data from a PDF using pdfplumber's table detection."""
@@ -75,8 +78,10 @@ def write_csv(rows, output_path):
 
 
 def parse_cabin_code(code):
-    """Map a cabin code like '4PC', '6PTS', '3PC' to engine format ('4c', '6c', '3c')."""
+    """Map a lodging code like '4PC', '6PTS', '3PC' to engine format ('4c', '6t', '3c')."""
     code = code.strip().upper()
+    if code in TENT_CODES:
+        return "6t"
     match = re.match(r"(\d)", code)
     if match:
         return CABIN_MAP.get(match.group(1))

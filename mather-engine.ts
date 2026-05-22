@@ -96,9 +96,9 @@ function simulateTemporalOnce(
 
     // Step 1: Roll cancellations for this week's cabins
     const cancelRate = reservationCancelRate(week);
-    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
+    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0, '6t': 0 };
 
-    for (const size of ['2c', '3c', '4c', '6c'] as CabinSize[]) {
+    for (const size of ['2c', '3c', '4c', '6c', '6t'] as CabinSize[]) {
       for (let c = 0; c < INVENTORY_PER_WEEK[size]; c++) {
         if (rng() < cancelRate) {
           openings[size]++;
@@ -164,8 +164,8 @@ export function simulate(waitlist: Family[]): SimulationResult[] {
 
   for (let week = 1; week <= TOTAL_WEEKS; week++) {
     const cancelRate = reservationCancelRate(week);
-    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
-    for (const size of ['2c', '3c', '4c', '6c'] as CabinSize[]) {
+    const openings: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0, '6t': 0 };
+    for (const size of ['2c', '3c', '4c', '6c', '6t'] as CabinSize[]) {
       openings[size] = Math.round(INVENTORY_PER_WEEK[size] * cancelRate);
     }
 
@@ -379,7 +379,7 @@ export interface CabinDemand {
 
 export function computeCabinDemand(waitlist: Family[]): CabinDemand[] {
   const counts: Record<CabinSize, Set<number>> = {
-    '2c': new Set(), '3c': new Set(), '4c': new Set(), '6c': new Set(),
+    '2c': new Set(), '3c': new Set(), '4c': new Set(), '6c': new Set(), '6t': new Set(),
   };
 
   for (const family of waitlist) {
@@ -388,7 +388,7 @@ export function computeCabinDemand(waitlist: Family[]): CabinDemand[] {
     }
   }
 
-  return (['4c', '6c', '3c', '2c'] as CabinSize[]).map((size) => {
+  return (['4c', '6c', '3c', '2c', '6t'] as CabinSize[]).map((size) => {
     const totalFamilies = counts[size].size;
     const totalCabins = INVENTORY_PER_WEEK[size] * TOTAL_WEEKS;
     // Sum expected cancellations across all weeks (rate varies per week)
@@ -427,7 +427,7 @@ export function computeWeekDemand(
 ): WeekDemand[] {
   return weeks.map((week) => {
     const familiesThisWeek = new Set<number>();
-    const counts: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0 };
+    const counts: Record<CabinSize, number> = { '2c': 0, '3c': 0, '4c': 0, '6c': 0, '6t': 0 };
 
     for (const family of waitlist) {
       for (const pref of family.preferences) {
